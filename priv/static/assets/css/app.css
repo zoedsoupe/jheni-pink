@@ -694,6 +694,37 @@ ul, ol { list-style: none; }
   background-size: auto, auto, auto, auto, auto;
 }
 
+/* persistent login pill (root layout) */
+.jhene-pill {
+  position: fixed;
+  bottom: var(--s-4);
+  right: var(--s-4);
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.7rem;
+  background: var(--c-vinho);
+  border: 2px solid var(--c-mostarda);
+  color: var(--c-limao);
+  font-family: 'VT323', monospace;
+  font-size: 1rem;
+  box-shadow: var(--shadow-cute);
+}
+.jhene-pill-text { color: var(--c-mostarda); }
+.jhene-pill-link {
+  color: var(--c-limao);
+  text-decoration: none;
+}
+.jhene-pill-link:hover,
+.jhene-pill-link:focus {
+  color: var(--c-cream);
+  text-decoration: underline wavy var(--c-mostarda);
+}
+
+/* editable block (jhene edit mode) */
+.editable-block { position: relative; }
+
 /* lost page: stripes + sob */
 .bg-lost {
   background:

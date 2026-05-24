@@ -1,27 +1,71 @@
 defmodule SiteWeb.CheerLive do
   use SiteWeb, :live_view
+  use SiteWeb.RoomEditor, room: "cheer"
 
-  @campeonatos [
-    %{
-      data: "25/10/2025",
-      local: "Riocentro - RJ",
-      time: "Winter (nível 2)",
-      hora: "13h16"
-    },
-    %{
-      data: "25/10/2025",
-      local: "Riocentro - RJ",
-      time: "Knight (nível 3)",
-      hora: "15h00"
-    }
-  ]
+  import SiteWeb.RoomEditor, only: [editable: 1]
 
   def mount(_params, _session, socket) do
+    if connected?(socket), do: Site.Rooms.subscribe()
+
     {:ok,
      socket
-     |> assign(page_title: "cheer")
-     |> assign(campeonatos: @campeonatos)}
+     |> assign(
+       page_title: "cheer",
+       editing_key: nil,
+       raw_block: nil
+     )
+     |> assign_content()}
   end
+
+  defp assign_content(socket) do
+    assign(socket,
+      marquee: Site.Rooms.value(@room, "marquee", default_for("marquee")),
+      stats: Site.Rooms.value(@room, "stats", default_for("stats")),
+      campeonatos: Site.Rooms.value(@room, "campeonatos", default_for("campeonatos")),
+      equipe_text: Site.Rooms.value(@room, "equipe_text", default_for("equipe_text"))
+    )
+  end
+
+  defp default_for("marquee") do
+    "*~*~* READY? OK! *~*~* 5-6-7-8 *~*~* all-star competitivo *~*~* equipe é família *~*~* Riocentro 2025 *~*~*"
+  end
+
+  defp default_for("stats") do
+    """
+    modalidade | all-star
+    nível 2 | Winter team
+    nível 3 | Knight team
+    posição | flyer / base (depende do stunt)
+    treina | várias vezes na semana, sem dor sem ganho
+    """
+    |> String.trim()
+  end
+
+  defp default_for("campeonatos") do
+    """
+    time: Winter (nível 2)
+    data: 25/10/2025
+    local: Riocentro - RJ
+    hora: 13h16
+
+    time: Knight (nível 3)
+    data: 25/10/2025
+    local: Riocentro - RJ
+    hora: 15h00
+    """
+    |> String.trim()
+  end
+
+  defp default_for("equipe_text") do
+    """
+    equipe é família. a gente cai junto, levanta junto, ganha junto e
+    chora junto. obrigada por cada stunt, cada grito, cada abraço
+    depois da apresentação.
+    """
+    |> String.trim()
+  end
+
+  defp default_for(_), do: ""
 
   def render(assigns) do
     ~H"""
@@ -37,46 +81,77 @@ defmodule SiteWeb.CheerLive do
           <p class="font-pixel text-vinho-soft text-lg">~*~ go go go ~*~</p>
         </header>
 
-        <div class="bg-mostarda text-vinho py-2 border-4 border-vinho shadow-cute mb-6 marquee">
-          <span class="marquee-inner font-bubblegum text-xl">
-            *~*~* READY? OK! *~*~* 5-6-7-8 *~*~* all-star competitivo *~*~* equipe é família *~*~* Riocentro 2025 *~*~*
-          </span>
+        <div class="bg-mostarda text-vinho py-2 border-4 border-vinho shadow-cute mb-6">
+          <.editable
+            id="cheer-marquee"
+            key="marquee"
+            authed={@jhene_authorized}
+            editing_key={@editing_key}
+            raw={@raw_block}
+            rows={3}
+          >
+            <div class="marquee">
+              <span class="marquee-inner font-bubblegum text-xl">{@marquee}</span>
+            </div>
+          </.editable>
         </div>
 
         <section class="card-y2k mb-6">
           <h2 class="font-bubblegum text-pink text-3xl mb-4 border-b-2 border-bubblegum border-dashed pb-2">stats da atleta</h2>
-          <dl class="grid grid-stats gap-2 text-base">
-            <dt class="font-bubblegum text-sunset-rose">modalidade</dt>
-            <dd>all-star</dd>
-            <dt class="font-bubblegum text-sunset-rose">nível 2</dt>
-            <dd>Winter team</dd>
-            <dt class="font-bubblegum text-sunset-rose">nível 3</dt>
-            <dd>Knight team</dd>
-            <dt class="font-bubblegum text-sunset-rose">posição</dt>
-            <dd>flyer / base (depende do stunt)</dd>
-            <dt class="font-bubblegum text-sunset-rose">treina</dt>
-            <dd>várias vezes na semana, sem dor sem ganho</dd>
-          </dl>
+          <.editable
+            id="cheer-stats"
+            key="stats"
+            authed={@jhene_authorized}
+            editing_key={@editing_key}
+            raw={@raw_block}
+            rows={6}
+            hint="uma linha por par. formato: chave | valor"
+          >
+            <dl class="grid grid-stats gap-2 text-base">
+              <%= for {k, v} <- Site.Rooms.pairs(@stats) do %>
+                <dt class="font-bubblegum text-sunset-rose">{k}</dt>
+                <dd>{v}</dd>
+              <% end %>
+            </dl>
+          </.editable>
         </section>
 
         <section class="card-y2k mb-6">
           <h2 class="font-bubblegum text-pink text-3xl mb-4 border-b-2 border-bubblegum border-dashed pb-2">campeonatos</h2>
-          <ul class="flex flex-col gap-3">
-            <li :for={c <- @campeonatos} class="px-4 py-3 border-l-4 border-sunset-rose bg-bubblegum">
-              <div class="font-bubblegum text-vinho text-xl">{c.time}</div>
-              <div class="font-pixel text-vinho-soft text-base">{c.data} -- {c.local}</div>
-              <div class="font-pixel text-sunset-rose text-base">competiu às {c.hora}</div>
-            </li>
-          </ul>
+          <.editable
+            id="cheer-campeonatos"
+            key="campeonatos"
+            authed={@jhene_authorized}
+            editing_key={@editing_key}
+            raw={@raw_block}
+            rows={14}
+            hint="cada campeonato: linhas 'time:', 'data:', 'local:', 'hora:' separadas por linha em branco"
+          >
+            <ul class="flex flex-col gap-3">
+              <li :for={c <- Site.Rooms.records(@campeonatos)} class="px-4 py-3 border-l-4 border-sunset-rose bg-bubblegum">
+                <div class="font-bubblegum text-vinho text-xl">{c["time"]}</div>
+                <div class="font-pixel text-vinho-soft text-base">{c["data"]} -- {c["local"]}</div>
+                <div class="font-pixel text-sunset-rose text-base">competiu às {c["hora"]}</div>
+              </li>
+            </ul>
+          </.editable>
         </section>
 
         <section class="bg-sunset-gradient border-4 border-vinho shadow-cute p-6 text-center mb-6">
           <h2 class="font-bubblegum text-cream text-3xl mb-3">minha equipe</h2>
-          <p class="font-comic text-cream text-lg leading-relaxed">
-            equipe é família. a gente cai junto, levanta junto, ganha junto e
-            chora junto. obrigada por cada stunt, cada grito, cada abraço
-            depois da apresentação.
-          </p>
+          <.editable
+            id="cheer-equipe-text"
+            key="equipe_text"
+            authed={@jhene_authorized}
+            editing_key={@editing_key}
+            raw={@raw_block}
+            rows={5}
+            hint="parágrafos separados por linha em branco"
+          >
+            <div class="font-comic text-cream text-lg leading-relaxed flex flex-col gap-2">
+              <p :for={para <- Site.Rooms.paragraphs(@equipe_text)}>{para}</p>
+            </div>
+          </.editable>
           <p class="font-pixel text-cream text-2xl mt-4">[ Winter &lt;3 Knight ]</p>
         </section>
 

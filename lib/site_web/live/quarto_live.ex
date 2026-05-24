@@ -1,12 +1,76 @@
 defmodule SiteWeb.QuartoLive do
   use SiteWeb, :live_view
+  use SiteWeb.RoomEditor, room: "quarto"
+
+  import SiteWeb.RoomEditor, only: [editable: 1]
 
   def mount(_params, _session, socket) do
+    if connected?(socket), do: Site.Rooms.subscribe()
+
     {:ok,
      socket
-     |> assign(page_title: "quarto")
-     |> assign(dias_aniversario: dias_pro_aniversario())}
+     |> assign(
+       page_title: "quarto",
+       dias_aniversario: dias_pro_aniversario(),
+       editing_key: nil,
+       raw_block: nil
+     )
+     |> assign_content()}
   end
+
+  defp assign_content(socket) do
+    assign(socket,
+      subtitle: Site.Rooms.value(@room, "subtitle", default_for("subtitle")),
+      marquee: Site.Rooms.value(@room, "marquee", default_for("marquee")),
+      bio: Site.Rooms.value(@room, "bio", default_for("bio")),
+      top5: Site.Rooms.value(@room, "top5", default_for("top5")),
+      stats: Site.Rooms.value(@room, "stats", default_for("stats")),
+      humor: Site.Rooms.value(@room, "humor", default_for("humor"))
+    )
+  end
+
+  defp default_for("subtitle"), do: "~*~ bem-vinda à minha salinha ~*~"
+
+  defp default_for("marquee") do
+    "*~*~* bem-vinda ao meu quarto *~*~* não mexe nas minhas coisas *~*~* alimenta o Simba *~*~* beijinhos *~*~*"
+  end
+
+  defp default_for("bio") do
+    """
+    oi, sou a Jhene! moro em Campos onde estudo psicologia na UFF. nas férias volto pra Manhuaçu, onde minha mãe e meu Simba me esperam.
+
+    cheerleader nas horas vagas - faço all-star competitivo. já competi até no Riocentro.
+
+    tenho um stack de mulheres pra discutir: Butler, Wittig, Beauvoir, Gayle Rubin, Deleuze e Guattari.
+    """
+    |> String.trim()
+  end
+
+  defp default_for("top5") do
+    """
+    zoey
+    Simba (o gato)
+    mãe
+    o time de cheer todo
+    Djavan
+    """
+    |> String.trim()
+  end
+
+  defp default_for("stats") do
+    """
+    nome | jhene
+    cidade | Manhuaçu / Campos
+    curso | Psicologia UFF
+    cheer | all-star nível 2 + 3
+    gato | Simba
+    é | lésbica
+    """
+    |> String.trim()
+  end
+
+  defp default_for("humor"), do: "=^_^="
+  defp default_for(_), do: ""
 
   defp dias_pro_aniversario do
     today = Date.utc_today()
@@ -20,13 +84,33 @@ defmodule SiteWeb.QuartoLive do
       <div class="max-w-4xl mx-auto">
         <header class="card-y2k text-center mb-4">
           <h1 class="wordart-pink text-4xl sm:text-5xl mb-2">o quarto</h1>
-          <p class="font-pixel text-vinho-soft text-base">~*~ bem-vinda à minha salinha ~*~</p>
+          <.editable
+            id="quarto-subtitle"
+            key="subtitle"
+            authed={@jhene_authorized}
+            editing_key={@editing_key}
+            raw={@raw_block}
+            rows={2}
+            hint="o subtítulo em cima do quarto"
+          >
+            <p class="font-pixel text-vinho-soft text-base">{@subtitle}</p>
+          </.editable>
         </header>
 
-        <div class="bg-pink text-cream py-2 border-4 border-vinho shadow-cute mb-6 marquee">
-          <span class="marquee-inner font-bubblegum text-xl">
-            *~*~* bem-vinda ao meu quarto *~*~* não mexe nas minhas coisas *~*~* alimenta o Simba *~*~* beijinhos *~*~*
-          </span>
+        <div class="bg-pink text-cream py-2 border-4 border-vinho shadow-cute mb-6">
+          <.editable
+            id="quarto-marquee"
+            key="marquee"
+            authed={@jhene_authorized}
+            editing_key={@editing_key}
+            raw={@raw_block}
+            rows={3}
+            hint="texto que passa rolando no topo"
+          >
+            <div class="marquee">
+              <span class="marquee-inner font-bubblegum text-xl">{@marquee}</span>
+            </div>
+          </.editable>
         </div>
 
         <div class="grid grid-1 md:grid-2 gap-4 md:items-start">
@@ -39,25 +123,37 @@ defmodule SiteWeb.QuartoLive do
 
             <section class="card-y2k">
               <h2 class="font-bubblegum text-pink text-2xl mb-3 border-b-2 border-bubblegum border-dashed pb-2">stats</h2>
-              <dl class="grid grid-stats gap-1 text-base">
-                <dt class="font-bubblegum text-sunset-rose">nome</dt>
-                <dd>jhene</dd>
-                <dt class="font-bubblegum text-sunset-rose">cidade</dt>
-                <dd>Manhuaçu / Campos</dd>
-                <dt class="font-bubblegum text-sunset-rose">curso</dt>
-                <dd>Psicologia UFF</dd>
-                <dt class="font-bubblegum text-sunset-rose">cheer</dt>
-                <dd>all-star nível 2 + 3</dd>
-                <dt class="font-bubblegum text-sunset-rose">gato</dt>
-                <dd>Simba</dd>
-                <dt class="font-bubblegum text-sunset-rose">é</dt>
-                <dd>lésbica</dd>
-              </dl>
+              <.editable
+                id="quarto-stats"
+                key="stats"
+                authed={@jhene_authorized}
+                editing_key={@editing_key}
+                raw={@raw_block}
+                rows={8}
+                hint="uma linha por par. formato: chave | valor"
+              >
+                <dl class="grid grid-stats gap-1 text-base">
+                  <%= for {k, v} <- Site.Rooms.pairs(@stats) do %>
+                    <dt class="font-bubblegum text-sunset-rose">{k}</dt>
+                    <dd>{v}</dd>
+                  <% end %>
+                </dl>
+              </.editable>
             </section>
 
             <section class="bg-mostarda border-3 border-dashed border-vinho p-4 text-center">
               <span class="font-pixel text-vinho text-base block mb-1">humor atual</span>
-              <span class="block text-4xl leading-none font-pixel">=^_^=</span>
+              <.editable
+                id="quarto-humor"
+                key="humor"
+                authed={@jhene_authorized}
+                editing_key={@editing_key}
+                raw={@raw_block}
+                rows={2}
+                hint="emoticon do dia"
+              >
+                <span class="block text-4xl leading-none font-pixel">{@humor}</span>
+              </.editable>
             </section>
 
             <section class="bg-sunset-gradient border-3 border-vinho shadow-cute p-4 text-center">
@@ -70,22 +166,41 @@ defmodule SiteWeb.QuartoLive do
           <section class="flex flex-col gap-4">
             <article class="card-y2k">
               <h2 class="font-bubblegum text-pink text-2xl mb-3 border-b-2 border-bubblegum border-dashed pb-2">sobre mim</h2>
-              <div class="leading-relaxed text-base flex flex-col gap-3">
-                <p>oi, sou a Jhene! moro em Campos onde estudo psicologia na UFF. nas férias volto pra Manhuaçu, onde minha mãe e meu Simba me esperam.</p>
-                <p>cheerleader nas horas vagas - faço all-star competitivo. já competi até no Riocentro.</p>
-                <p>tenho um stack de mulheres pra discutir: Butler, Wittig, Beauvoir, Gayle Rubin, Deleuze e Guattari. <.link navigate={~p"/psico"}>vai pra estante &gt;&gt;</.link></p>
-              </div>
+              <.editable
+                id="quarto-bio"
+                key="bio"
+                authed={@jhene_authorized}
+                editing_key={@editing_key}
+                raw={@raw_block}
+                rows={8}
+                hint="parágrafos separados por linha em branco"
+              >
+                <div class="leading-relaxed text-base flex flex-col gap-3">
+                  <p :for={para <- Site.Rooms.paragraphs(@bio)}>{para}</p>
+                  <p>
+                    <.link navigate={~p"/psico"}>vai pra estante &gt;&gt;</.link>
+                  </p>
+                </div>
+              </.editable>
             </article>
 
             <article class="card-y2k">
               <h2 class="font-bubblegum text-pink text-2xl mb-3 border-b-2 border-bubblegum border-dashed pb-2">top 5</h2>
-              <ul class="flex flex-col gap-2">
-                <li class="px-3 py-2 border-l-4 border-musgo bg-menta">zoey</li>
-                <li class="px-3 py-2 border-l-4 border-musgo bg-menta">Simba (o gato)</li>
-                <li class="px-3 py-2 border-l-4 border-musgo bg-menta">mãe</li>
-                <li class="px-3 py-2 border-l-4 border-musgo bg-menta">o time de cheer todo</li>
-                <li class="px-3 py-2 border-l-4 border-musgo bg-menta">Djavan</li>
-              </ul>
+              <.editable
+                id="quarto-top5"
+                key="top5"
+                authed={@jhene_authorized}
+                editing_key={@editing_key}
+                raw={@raw_block}
+                rows={6}
+                hint="um item por linha"
+              >
+                <ul class="flex flex-col gap-2">
+                  <li :for={item <- Site.Rooms.lines(@top5)} class="px-3 py-2 border-l-4 border-musgo bg-menta">
+                    {item}
+                  </li>
+                </ul>
+              </.editable>
             </article>
           </section>
         </div>

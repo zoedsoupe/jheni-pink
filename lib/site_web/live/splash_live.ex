@@ -1,5 +1,8 @@
 defmodule SiteWeb.SplashLive do
   use SiteWeb, :live_view
+  use SiteWeb.RoomEditor, room: "splash"
+
+  import SiteWeb.RoomEditor, only: [editable: 1]
 
   alias Site.Stats
 
@@ -17,18 +20,53 @@ defmodule SiteWeb.SplashLive do
   ]
 
   def mount(_params, _session, socket) do
-    if connected?(socket), do: Stats.bump_visits()
+    if connected?(socket) do
+      Stats.bump_visits()
+      Site.Rooms.subscribe()
+    end
 
-    {:ok, assign(socket, page_title: "jeni", decos: @decos)}
+    {:ok,
+     socket
+     |> assign(
+       page_title: "jeni",
+       decos: @decos,
+       editing_key: nil,
+       raw_block: nil
+     )
+     |> assign_content()}
   end
+
+  defp assign_content(socket) do
+    assign(socket,
+      marquee: Site.Rooms.value(@room, "marquee", default_for("marquee")),
+      subtitle: Site.Rooms.value(@room, "subtitle", default_for("subtitle"))
+    )
+  end
+
+  defp default_for("marquee") do
+    "*~*~*~* bem-vinda ao jeni ponto pink *~*~*~* deixa um recado no livro *~*~*~* no ar desde 2026 *~*~*~* beijinhos zoey *~*~*~*"
+  end
+
+  defp default_for("subtitle"), do: "jhene ~ mineira ~ desde 2026"
+  defp default_for(_), do: ""
 
   def render(assigns) do
     ~H"""
     <main class="bg-splash min-h-screen relative overflow-hidden">
-      <div class="bg-vinho text-mostarda border-b-4 border-mostarda py-2 marquee relative z-10">
-        <span class="marquee-inner font-pixel text-lg tracking-wider">
-          *~*~*~* bem-vinda ao jeni ponto pink *~*~*~* deixa um recado no livro *~*~*~* no ar desde 2026 *~*~*~* beijinhos zoey *~*~*~*
-        </span>
+      <div class="bg-vinho text-mostarda border-b-4 border-mostarda py-2 relative z-10">
+        <.editable
+          id="splash-marquee"
+          key="marquee"
+          authed={@jhene_authorized}
+          editing_key={@editing_key}
+          raw={@raw_block}
+          rows={3}
+          hint="texto que passa rolando no topo"
+        >
+          <div class="marquee">
+            <span class="marquee-inner font-pixel text-lg tracking-wider">{@marquee}</span>
+          </div>
+        </.editable>
       </div>
 
       <span :for={d <- @decos} class="float-deco" style={deco_style(d)}>{d.char}</span>
@@ -37,9 +75,19 @@ defmodule SiteWeb.SplashLive do
         <div class="text-center w-full max-w-lg relative z-10 p-6">
           <p class="font-pixel text-cream text-base mb-2 tracking-wider">*~* página pessoal da *~*</p>
           <h1 class="wordart text-7xl sm:text-7xl mb-3">jeni</h1>
-          <p class="font-pixel text-cream text-lg mb-8 tracking-wider">
-            jhene ~ mineira ~ desde 2026
-          </p>
+
+          <.editable
+            id="splash-subtitle"
+            key="subtitle"
+            authed={@jhene_authorized}
+            editing_key={@editing_key}
+            raw={@raw_block}
+            rows={2}
+            hint="subtítulo abaixo do nome"
+            class="mb-8"
+          >
+            <p class="font-pixel text-cream text-lg tracking-wider">{@subtitle}</p>
+          </.editable>
 
           <div class="flex flex-col gap-3 items-center mb-8 font-pixel text-2xl">
             <.link

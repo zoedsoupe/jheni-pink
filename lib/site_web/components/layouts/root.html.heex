@@ -15,5 +15,22 @@
   </head>
   <body>
     {@inner_content}
+
+    <div class="jhene-pill" aria-label="modo jeni">
+      <%= if assigns[:jhene_authorized] do %>
+        <span class="jhene-pill-text">logada</span>
+        <.link
+          href={~p"/cartas/sair"}
+          method="delete"
+          class="jhene-pill-link"
+        >
+          sair
+        </.link>
+      <% else %>
+        <.link navigate={~p"/cartas/entrar"} class="jhene-pill-link">
+          [ login jhene ]
+        </.link>
+      <% end %>
+    </div>
   </body>
 </html>
