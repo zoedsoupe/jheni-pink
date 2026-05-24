@@ -677,6 +677,23 @@ ul, ol { list-style: none; }
   opacity: 0.8;
 }
 
+/* diário: notebook page w/ punched holes */
+.bg-diario {
+  background-color: var(--c-cream);
+  background-image:
+    radial-gradient(circle at 24px 30px, rgba(42, 14, 30, 0.18) 5px, transparent 6px),
+    radial-gradient(circle at 24px 90px, rgba(42, 14, 30, 0.18) 5px, transparent 6px),
+    radial-gradient(circle at 24px 150px, rgba(42, 14, 30, 0.18) 5px, transparent 6px),
+    linear-gradient(90deg, transparent 0, transparent 48px, rgba(255, 20, 147, 0.3) 48px, rgba(255, 20, 147, 0.3) 50px, transparent 50px),
+    repeating-linear-gradient(180deg,
+      transparent 0,
+      transparent 33px,
+      rgba(76, 130, 200, 0.2) 33px,
+      rgba(76, 130, 200, 0.2) 34px);
+  background-repeat: repeat;
+  background-size: auto, auto, auto, auto, auto;
+}
+
 /* lost page: stripes + sob */
 .bg-lost {
   background:

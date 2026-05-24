@@ -30,6 +30,7 @@ defmodule SiteWeb.Router do
       live "/lesbica", LesbicaLive, :index
       live "/livro", LivroLive, :index
       live "/links", LinksLive, :index
+      live "/diario", DiarioLive, :index
     end
   end
 

@@ -3,11 +3,12 @@ defmodule SiteWeb.MapaLive do
 
   @rooms [
     %{path: "/quarto",  icon: "[ <3 ]", label: "quarto"},
+    %{path: "/diario",  icon: ">>>",    label: "diário"},
     %{path: "/cheer",   icon: "\\o/",   label: "cheer"},
     %{path: "/psico",   icon: "[ B ]",  label: "psico"},
     %{path: "/menu",    icon: "( O )",  label: "menu"},
     %{path: "/cartas",  icon: "[ @ ]",  label: "cartas"},
-    %{path: "/lesbica", icon: "=====",  label: "lesbica"},
+    %{path: "/lesbica", icon: "=====",  label: "lésbica"},
     %{path: "/livro",   icon: "[ i ]",  label: "livro"},
     %{path: "/links",   icon: "<=>",    label: "links"},
     %{path: "/",        icon: "~ * ~",  label: "splash"}
