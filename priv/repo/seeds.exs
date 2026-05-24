@@ -6,10 +6,10 @@ alias Site.Repo
 alias Site.Guestbook.Entry
 
 # First guestbook entry: zoey -> jhene
-unless Repo.get_by(Entry, nome: "raposinha") do
+unless Repo.get_by(Entry, nome: "zoeyrinha") do
   %Entry{}
   |> Entry.changeset(%{
-    "nome" => "raposinha",
+    "nome" => "zoeyrinha",
     "sticker" => "<3",
     "mensagem" => """
     primeira assinatura desse livro tem que ser minha. te amo,

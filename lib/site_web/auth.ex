@@ -65,18 +65,19 @@ defmodule SiteWeb.Auth do
     new()
     |> to({"jhene", email})
     |> from(from_email())
-    |> subject("[ jeni.pink ] seu link pra entrar nas cartas")
+    |> subject("[ jeni.pink ] seu link pra entrar no modo edição")
     |> text_body("""
     oi jhene!
 
-    clica nesse link pra entrar nas cartas (vale por 15 min):
+    clica nesse link pra entrar no modo edição do site (vale por 15 min):
 
     #{login_url}
 
-    se nao foi voce, ignora.
+    com esse login você consegue editar as rooms, postar no diário, e ler
+    as cartas. se não foi você, ignora.
 
     beijos,
-    raposinha
+    zoeyrinha
     """)
     |> Mailer.deliver()
   end

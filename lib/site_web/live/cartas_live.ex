@@ -32,7 +32,7 @@ defmodule SiteWeb.CartasLive do
           <span class="font-pixel text-5xl block mb-2 text-sunset-rose">[ @ ]</span>
           <h1 class="wordart-pink text-4xl sm:text-5xl mb-2">cartas pra jhene</h1>
           <p class="font-pixel text-vinho-soft text-base">
-            *~* poemas e missões da raposinha *~*
+            *~* poemas e missões da zoeyrinha *~*
           </p>
 
           <%= if @jhene_authorized do %>
@@ -53,11 +53,11 @@ defmodule SiteWeb.CartasLive do
           <% end %>
         </header>
 
-        <div :if={Phoenix.Flash.get(@flash, :info)} class="card-y2k mb-4 bg-menta">
+        <div :if={Phoenix.Flash.get(@flash, :info)} class="bg-menta border-3 border-vinho p-4 mb-4 shadow-cute">
           <p class="font-bubblegum text-vinho text-lg">{Phoenix.Flash.get(@flash, :info)}</p>
         </div>
 
-        <div :if={Phoenix.Flash.get(@flash, :error)} class="card-y2k mb-4 bg-bubblegum">
+        <div :if={Phoenix.Flash.get(@flash, :error)} class="bg-bubblegum border-3 border-sunset-rose p-4 mb-4 shadow-cute">
           <p class="font-bubblegum text-sunset-rose text-lg">{Phoenix.Flash.get(@flash, :error)}</p>
         </div>
 
@@ -67,7 +67,7 @@ defmodule SiteWeb.CartasLive do
             phx-value-tab="poemas"
             class={[
               "px-4 py-2 border-3 border-vinho font-bubblegum text-xl shadow-cute",
-              if(@tab == "poemas", do: "bg-pink text-cream", else: "bg-cream text-vinho")
+              if(@tab == "poemas", do: "bg-vinho text-mostarda", else: "bg-cream text-vinho")
             ]}
           >
             poemas
@@ -77,7 +77,7 @@ defmodule SiteWeb.CartasLive do
             phx-value-tab="missoes"
             class={[
               "px-4 py-2 border-3 border-vinho font-bubblegum text-xl shadow-cute",
-              if(@tab == "missoes", do: "bg-pink text-cream", else: "bg-cream text-vinho")
+              if(@tab == "missoes", do: "bg-vinho text-mostarda", else: "bg-cream text-vinho")
             ]}
           >
             missões

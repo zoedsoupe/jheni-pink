@@ -165,7 +165,7 @@ defmodule SiteWeb.LivroLive do
                   :for={s <- @stickers}
                   class={[
                     "px-3 py-2 border-3 border-vinho cursor-pointer font-pixel text-lg hover-lift",
-                    if(@form[:sticker].value == s, do: "bg-pink text-cream", else: "bg-cream text-vinho")
+                    if(@form[:sticker].value == s, do: "bg-vinho text-mostarda", else: "bg-cream text-vinho")
                   ]}
                 >
                   <input

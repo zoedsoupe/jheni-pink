@@ -7,9 +7,9 @@ defmodule SiteWeb.AuthHTML do
       <div class="max-w-md mx-auto">
         <header class="card-y2k text-center mb-6 shadow-deep">
           <span class="font-pixel text-5xl block mb-2 text-sunset-rose">[ @ ]</span>
-          <h1 class="wordart-pink text-4xl sm:text-5xl mb-2">entrar nas cartas</h1>
+          <h1 class="wordart-pink text-4xl sm:text-5xl mb-2">login da jhene</h1>
           <p class="font-pixel text-vinho-soft text-base">
-            *~* só pra jhene *~*
+            *~* pra editar o site *~*
           </p>
         </header>
 
@@ -18,12 +18,12 @@ defmodule SiteWeb.AuthHTML do
             <p class="font-pixel text-vinho text-4xl mb-3">:)</p>
             <p class="font-bubblegum text-pink text-2xl mb-3">conferi a caixa de entrada</p>
             <p class="font-comic text-vinho text-base leading-relaxed mb-4">
-              se o email estiver na lista, voce vai receber um link em alguns
+              se o email estiver na lista, você vai receber um link em alguns
               segundos. o link vale por 15 minutos.
             </p>
             <p class="font-pixel text-vinho-soft text-base">[ olha o spam também ]</p>
             <div class="mt-6">
-              <.link navigate={~p"/cartas"} class="btn-y2k">&lt;- voltar</.link>
+              <.link navigate={~p"/mapa"} class="btn-y2k">&lt;- voltar pro mapa</.link>
             </div>
           </section>
         <% else %>
@@ -46,13 +46,13 @@ defmodule SiteWeb.AuthHTML do
                 class="w-full p-3 border-3 border-vinho bg-cream font-comic text-base"
               />
               <button type="submit" class="btn-y2k btn-pulse mt-2">
-                me manda o link
+                &gt;&gt; me manda o link &lt;&lt;
               </button>
             </form>
 
             <div class="text-center mt-6">
-              <.link navigate={~p"/cartas"} class="font-pixel text-sunset-rose">
-                &lt;- voltar pras cartas
+              <.link navigate={~p"/mapa"} class="font-pixel text-sunset-rose">
+                &lt;- voltar pro mapa
               </.link>
             </div>
           </section>

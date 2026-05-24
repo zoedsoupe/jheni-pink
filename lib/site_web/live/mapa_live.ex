@@ -42,7 +42,7 @@ defmodule SiteWeb.MapaLive do
   end
 
   defp default_for("subtitle"), do: "*~* escolha sua aventura *~*"
-  defp default_for("footer"), do: "feito com muito amor pela sua raposinha"
+  defp default_for("footer"), do: "feito com muito amor pela tua zoeyrinha"
   defp default_for(_), do: ""
 
   def render(assigns) do

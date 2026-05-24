@@ -89,24 +89,18 @@ defmodule SiteWeb.SplashLive do
             <p class="font-pixel text-cream text-lg tracking-wider">{@subtitle}</p>
           </.editable>
 
-          <div class="flex flex-col gap-3 items-center mb-8 font-pixel text-2xl">
-            <.link
-              navigate={~p"/mapa"}
-              class="bg-vinho text-mostarda border-4 border-mostarda px-5 py-2 no-underline tracking-wider hover-lift"
-            >
+          <div class="flex flex-col gap-3 items-center mb-8">
+            <.link navigate={~p"/mapa"} class="btn-y2k btn-pulse">
               &gt;&gt; entra no site &lt;&lt;
             </.link>
-            <.link
-              navigate={~p"/livro"}
-              class="bg-mostarda text-vinho border-4 border-vinho px-5 py-2 no-underline tracking-wider hover-lift"
-            >
+            <.link navigate={~p"/livro"} class="btn-y2k btn-y2k-alt">
               &gt;&gt; livro de recados &lt;&lt;
             </.link>
           </div>
 
           <div class="font-pixel text-cream text-sm mt-8 leading-relaxed flex flex-col items-center gap-2">
             <span>melhor visto em 1024x768 :)</span>
-            <a href="https://zoedsoupe.zeetech.io" target="_blank" rel="noopener" class="tape no-underline">raposinha @ zeetech</a>
+            <a href="https://zoedsoupe.zeetech.io" target="_blank" rel="noopener" class="tape no-underline">zoeyrinha @ zeetech</a>
           </div>
         </div>
       </div>

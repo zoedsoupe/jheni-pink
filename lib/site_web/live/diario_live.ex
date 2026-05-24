@@ -162,7 +162,7 @@ defmodule SiteWeb.DiarioLive do
                 :for={s <- @stickers}
                 class={[
                   "px-3 py-2 border-3 border-vinho cursor-pointer font-pixel text-lg hover-lift",
-                  if(@form[:sticker].value == s, do: "bg-pink text-cream", else: "bg-cream text-vinho")
+                  if(@form[:sticker].value == s, do: "bg-vinho text-mostarda", else: "bg-cream text-vinho")
                 ]}
               >
                 <input type="radio" name={@form[:sticker].name} value={s} checked={@form[:sticker].value == s} class="hidden" />
@@ -201,7 +201,7 @@ defmodule SiteWeb.DiarioLive do
                       :for={s <- @stickers}
                       class={[
                         "px-2 py-1 border-2 border-vinho cursor-pointer font-pixel text-base",
-                        if(@edit_form[:sticker].value == s, do: "bg-pink text-cream", else: "bg-cream text-vinho")
+                        if(@edit_form[:sticker].value == s, do: "bg-vinho text-mostarda", else: "bg-cream text-vinho")
                       ]}
                     >
                       <input type="radio" name={@edit_form[:sticker].name} value={s} checked={@edit_form[:sticker].value == s} class="hidden" />

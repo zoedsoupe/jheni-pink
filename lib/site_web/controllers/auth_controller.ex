@@ -32,7 +32,7 @@ defmodule SiteWeb.AuthController do
         |> configure_session(renew: true)
         |> put_session(:jhene_session, session_token)
         |> put_flash(:info, "bem-vinda, jhene <3")
-        |> redirect(to: ~p"/cartas")
+        |> redirect(to: ~p"/mapa")
 
       _ ->
         conn
