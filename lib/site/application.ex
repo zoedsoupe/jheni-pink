@@ -14,9 +14,7 @@ defmodule Site.Application do
        repos: Application.fetch_env!(:site, :ecto_repos), skip: skip_migrations?()},
       {DNSCluster, query: Application.get_env(:site, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: Site.PubSub},
-      # Start a worker by calling: Site.Worker.start_link(arg)
-      # {Site.Worker, arg},
-      # Start to serve requests, typically the last entry
+      SiteWeb.Presence,
       SiteWeb.Endpoint
     ]
 
