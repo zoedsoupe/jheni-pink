@@ -2,19 +2,19 @@ defmodule SiteWeb.MapaLive do
   use SiteWeb, :live_view
 
   @rooms [
-    %{path: "/quarto",  emoji: "♡",      label: "quarto"},
-    %{path: "/cheer",   emoji: "📣",     label: "cheer"},
-    %{path: "/psico",   emoji: "📚",     label: "psico"},
-    %{path: "/menu",    emoji: "🍪",     label: "menu"},
-    %{path: "/cartas",  emoji: "💌",     label: "cartas"},
-    %{path: "/lesbica", emoji: "🏳️‍🌈",  label: "lésbica"},
-    %{path: "/livro",   emoji: "✍️",     label: "livro"},
-    %{path: "/links",   emoji: "🌐",     label: "links"},
-    %{path: "/",        emoji: "🏠",     label: "splash"}
+    %{path: "/quarto",  icon: "[ <3 ]", label: "quarto"},
+    %{path: "/cheer",   icon: "\\o/",   label: "cheer"},
+    %{path: "/psico",   icon: "[ B ]",  label: "psico"},
+    %{path: "/menu",    icon: "( O )",  label: "menu"},
+    %{path: "/cartas",  icon: "[ @ ]",  label: "cartas"},
+    %{path: "/lesbica", icon: "=====",  label: "lesbica"},
+    %{path: "/livro",   icon: "[ i ]",  label: "livro"},
+    %{path: "/links",   icon: "<=>",    label: "links"},
+    %{path: "/",        icon: "~ * ~",  label: "splash"}
   ]
 
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, page_title: "mapa do site ♡", rooms: @rooms)}
+    {:ok, assign(socket, page_title: "mapa do site", rooms: @rooms)}
   end
 
   def render(assigns) do
@@ -23,7 +23,7 @@ defmodule SiteWeb.MapaLive do
       <header class="text-center mb-8">
         <h1 class="wordart text-5xl sm:text-6xl mb-2">jheni.pink</h1>
         <p class="font-pixel text-vinho text-lg">
-          ∗ ⋆ ✧ ⋆ ∗ escolha sua aventura ∗ ⋆ ✧ ⋆ ∗
+          *~* escolha sua aventura *~*
         </p>
       </header>
 
@@ -33,14 +33,14 @@ defmodule SiteWeb.MapaLive do
           navigate={room.path}
           class="mapa-tile border-4 border-vinho shadow-cute hover-lift p-6 text-center no-underline font-bubblegum text-2xl flex flex-col items-center justify-center"
         >
-          <span class="block text-5xl mb-2 leading-none">{room.emoji}</span>
+          <span class="block text-3xl mb-2 leading-none font-pixel">{room.icon}</span>
           {room.label}
         </.link>
       </nav>
 
       <footer class="font-pixel text-vinho-soft text-center mt-10 text-sm leading-relaxed">
-        <p>♡ visitante #00042 ♡</p>
-        <p>made with much love por sua morceguinho 🦇</p>
+        <p>visitante numero 00042</p>
+        <p>feito com muito amor pela sua raposinha</p>
       </footer>
     </main>
     """
