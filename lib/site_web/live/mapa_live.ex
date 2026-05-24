@@ -14,7 +14,14 @@ defmodule SiteWeb.MapaLive do
   ]
 
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, page_title: "mapa do site", rooms: @rooms)}
+    visits = Site.Stats.get_visits()
+
+    {:ok,
+     assign(socket,
+       page_title: "mapa do site",
+       rooms: @rooms,
+       visits: Site.Stats.format_visits(visits)
+     )}
   end
 
   def render(assigns) do
@@ -39,7 +46,7 @@ defmodule SiteWeb.MapaLive do
       </nav>
 
       <footer class="font-pixel text-vinho-soft text-center mt-10 text-sm leading-relaxed">
-        <p>visitante número 00042</p>
+        <p>visitante número {@visits}</p>
         <p>feito com muito amor pela sua raposinha</p>
       </footer>
     </main>

@@ -41,7 +41,7 @@ defmodule SiteWeb.QuartoLive do
               <h2 class="font-bubblegum text-pink text-2xl mb-3 border-b-2 border-bubblegum border-dashed pb-2">stats</h2>
               <dl class="grid grid-stats gap-1 text-base">
                 <dt class="font-bubblegum text-sunset-rose">nome</dt>
-                <dd>Jhenifer</dd>
+                <dd>jhene</dd>
                 <dt class="font-bubblegum text-sunset-rose">cidade</dt>
                 <dd>Manhuaçu / Campos</dd>
                 <dt class="font-bubblegum text-sunset-rose">curso</dt>

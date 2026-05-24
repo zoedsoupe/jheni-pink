@@ -1,6 +1,8 @@
 defmodule SiteWeb.SplashLive do
   use SiteWeb, :live_view
 
+  alias Site.Stats
+
   @decos [
     %{top: "18%", left: "6%",   size: "1.8rem", char: "*"},
     %{top: "24%", right: "10%", size: "1.4rem", char: "~"},
@@ -15,7 +17,9 @@ defmodule SiteWeb.SplashLive do
   ]
 
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, page_title: "jheni.pink", decos: @decos)}
+    if connected?(socket), do: Stats.bump_visits()
+
+    {:ok, assign(socket, page_title: "jeni", decos: @decos)}
   end
 
   def render(assigns) do
@@ -23,7 +27,7 @@ defmodule SiteWeb.SplashLive do
     <main class="bg-splash min-h-screen relative overflow-hidden">
       <div class="bg-vinho text-mostarda border-b-4 border-mostarda py-2 marquee relative z-10">
         <span class="marquee-inner font-pixel text-lg tracking-wider">
-          *~*~*~* bem-vinda ao jheni ponto pink *~*~*~* deixa um recado no livro *~*~*~* no ar desde 2026 *~*~*~* beijinhos zoey *~*~*~*
+          *~*~*~* bem-vinda ao jeni ponto pink *~*~*~* deixa um recado no livro *~*~*~* no ar desde 2026 *~*~*~* beijinhos zoey *~*~*~*
         </span>
       </div>
 
@@ -32,18 +36,29 @@ defmodule SiteWeb.SplashLive do
       <div class="flex items-center justify-center" style="min-height: calc(100vh - 3.5rem); min-height: calc(100dvh - 3.5rem);">
         <div class="text-center w-full max-w-lg relative z-10 p-6">
           <p class="font-pixel text-cream text-base mb-2 tracking-wider">*~* página pessoal da *~*</p>
-          <h1 class="wordart text-6xl sm:text-7xl mb-3">jheni.pink</h1>
+          <h1 class="wordart text-7xl sm:text-7xl mb-3">jeni</h1>
           <p class="font-pixel text-cream text-lg mb-8 tracking-wider">
-            Jhenifer M. ~ Campos ~ desde 2026
+            jhene ~ mineira ~ desde 2026
           </p>
 
-          <.link navigate={~p"/mapa"} class="btn-y2k btn-pulse">
-            [ clica pra entrar ]
-          </.link>
+          <div class="flex flex-col gap-3 items-center mb-8 font-pixel text-2xl">
+            <.link
+              navigate={~p"/mapa"}
+              class="bg-vinho text-mostarda border-4 border-mostarda px-5 py-2 no-underline tracking-wider hover-lift"
+            >
+              &gt;&gt; entra no site &lt;&lt;
+            </.link>
+            <.link
+              navigate={~p"/livro"}
+              class="bg-mostarda text-vinho border-4 border-vinho px-5 py-2 no-underline tracking-wider hover-lift"
+            >
+              &gt;&gt; livro de recados &lt;&lt;
+            </.link>
+          </div>
 
-          <div class="font-pixel text-cream text-sm mt-8 leading-relaxed">
-            melhor visto em 1024x768 :)<br />
-            feito com muito amor pela <a href="https://zoedsoupe.zeetech.io">zoey</a>
+          <div class="font-pixel text-cream text-sm mt-8 leading-relaxed flex flex-col items-center gap-2">
+            <span>melhor visto em 1024x768 :)</span>
+            <a href="https://zoedsoupe.zeetech.io" target="_blank" rel="noopener" class="tape no-underline">raposinha @ zeetech</a>
           </div>
         </div>
       </div>
