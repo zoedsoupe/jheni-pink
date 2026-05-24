@@ -656,6 +656,27 @@ ul, ol { list-style: none; }
   100% { transform: scale(1) translateY(0); opacity: 1; }
 }
 
+/* cartas: parchment + gerbera deco */
+.bg-cartas {
+  background-color: #f7e8c8;
+  background-image:
+    radial-gradient(ellipse at 10% 15%, rgba(213, 45, 0, 0.08) 0 200px, transparent 200px),
+    radial-gradient(ellipse at 90% 85%, rgba(163, 2, 98, 0.08) 0 220px, transparent 220px),
+    repeating-linear-gradient(45deg,
+      transparent 0,
+      transparent 30px,
+      rgba(76, 30, 60, 0.04) 30px,
+      rgba(76, 30, 60, 0.04) 31px);
+}
+
+/* locked carta preview: blurred + dimmed */
+.locked-blur {
+  filter: blur(4px);
+  user-select: none;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
 /* lost page: stripes + sob */
 .bg-lost {
   background:

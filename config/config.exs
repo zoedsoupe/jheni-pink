@@ -31,6 +31,16 @@ config :site, SiteWeb.Endpoint,
 # at the `config/runtime.exs`.
 config :site, Site.Mailer, adapter: Swoosh.Adapters.Local
 
+# Swoosh uses Req for HTTP-based mailer adapters (Resend, etc).
+config :swoosh, :api_client, Swoosh.ApiClient.Req
+
+# /cartas magic-link auth -- whitelisted email + token signing.
+config :site, SiteWeb.Auth,
+  jhene_email: "jhenifermendesj@gmail.com",
+  from_email: {"jeni site", "no-reply@jeni.pink"},
+  login_max_age: 900,
+  session_max_age: 60 * 60 * 24 * 30
+
 # Configure esbuild (the version is required)
 config :esbuild,
   version: "0.25.4",
