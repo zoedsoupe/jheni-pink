@@ -39,7 +39,7 @@ defmodule SiteWeb.MapaLive do
       </nav>
 
       <footer class="font-pixel text-vinho-soft text-center mt-10 text-sm leading-relaxed">
-        <p>visitante numero 00042</p>
+        <p>visitante número 00042</p>
         <p>feito com muito amor pela sua raposinha</p>
       </footer>
     </main>

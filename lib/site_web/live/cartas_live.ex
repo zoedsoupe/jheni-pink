@@ -11,7 +11,7 @@ defmodule SiteWeb.CartasLive do
       <div class="card-y2k max-w-md text-center shadow-deep border-5">
         <span class="gif-bounce text-5xl block mb-4 font-pixel">[ @ ]</span>
         <h1 class="wordart text-3xl mb-2">cartas</h1>
-        <p class="font-pixel text-vinho-soft text-lg mb-4">pagina em construcao</p>
+        <p class="font-pixel text-vinho-soft text-lg mb-4">página em construção</p>
         <p class="tape mb-4">[ work in progress ]</p>
         <.link navigate={~p"/mapa"} class="btn-y2k">&lt;- mapa</.link>
       </div>

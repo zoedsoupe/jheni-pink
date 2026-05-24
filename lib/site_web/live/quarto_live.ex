@@ -20,12 +20,12 @@ defmodule SiteWeb.QuartoLive do
       <div class="max-w-4xl mx-auto">
         <header class="card-y2k text-center mb-4">
           <h1 class="wordart-pink text-4xl sm:text-5xl mb-2">o quarto</h1>
-          <p class="font-pixel text-vinho-soft text-base">~*~ bem-vinda a minha salinha ~*~</p>
+          <p class="font-pixel text-vinho-soft text-base">~*~ bem-vinda à minha salinha ~*~</p>
         </header>
 
         <div class="bg-pink text-cream py-2 border-4 border-vinho shadow-cute mb-6 marquee">
           <span class="marquee-inner font-bubblegum text-xl">
-            *~*~* bem-vinda ao meu quarto *~*~* nao mexe nas minhas coisas *~*~* alimenta o Simba *~*~* beijinhos *~*~*
+            *~*~* bem-vinda ao meu quarto *~*~* não mexe nas minhas coisas *~*~* alimenta o Simba *~*~* beijinhos *~*~*
           </span>
         </div>
 
@@ -43,15 +43,15 @@ defmodule SiteWeb.QuartoLive do
                 <dt class="font-bubblegum text-sunset-rose">nome</dt>
                 <dd>Jhenifer</dd>
                 <dt class="font-bubblegum text-sunset-rose">cidade</dt>
-                <dd>Manhuacu / Campos</dd>
+                <dd>Manhuaçu / Campos</dd>
                 <dt class="font-bubblegum text-sunset-rose">curso</dt>
                 <dd>Psicologia UFF</dd>
                 <dt class="font-bubblegum text-sunset-rose">cheer</dt>
-                <dd>all-star nivel 2 + 3</dd>
+                <dd>all-star nível 2 + 3</dd>
                 <dt class="font-bubblegum text-sunset-rose">gato</dt>
                 <dd>Simba</dd>
-                <dt class="font-bubblegum text-sunset-rose">e</dt>
-                <dd>lesbica</dd>
+                <dt class="font-bubblegum text-sunset-rose">é</dt>
+                <dd>lésbica</dd>
               </dl>
             </section>
 
@@ -61,9 +61,9 @@ defmodule SiteWeb.QuartoLive do
             </section>
 
             <section class="bg-sunset-gradient border-3 border-vinho shadow-cute p-4 text-center">
-              <span class="font-bubblegum text-base block">proximo aniversario</span>
+              <span class="font-bubblegum text-base block">próximo aniversário</span>
               <span class="font-pixel text-4xl block mt-1 mb-1">{@dias_aniversario}</span>
-              <span class="font-bubblegum text-sm block">dias ate 3 de janeiro</span>
+              <span class="font-bubblegum text-sm block">dias até 3 de janeiro</span>
             </section>
           </aside>
 
@@ -71,8 +71,8 @@ defmodule SiteWeb.QuartoLive do
             <article class="card-y2k">
               <h2 class="font-bubblegum text-pink text-2xl mb-3 border-b-2 border-bubblegum border-dashed pb-2">sobre mim</h2>
               <div class="leading-relaxed text-base flex flex-col gap-3">
-                <p>oi, sou a Jhene! moro em Campos onde estudo psicologia na UFF. nas ferias volto pra Manhuacu, onde minha mae e meu Simba me esperam.</p>
-                <p>cheerleader nas horas vagas - faco all-star competitivo. ja competi ate no Riocentro.</p>
+                <p>oi, sou a Jhene! moro em Campos onde estudo psicologia na UFF. nas férias volto pra Manhuaçu, onde minha mãe e meu Simba me esperam.</p>
+                <p>cheerleader nas horas vagas - faço all-star competitivo. já competi até no Riocentro.</p>
                 <p>tenho um stack de mulheres pra discutir: Butler, Wittig, Beauvoir, Gayle Rubin, Deleuze e Guattari. <.link navigate={~p"/psico"}>vai pra estante &gt;&gt;</.link></p>
               </div>
             </article>
@@ -82,7 +82,7 @@ defmodule SiteWeb.QuartoLive do
               <ul class="flex flex-col gap-2">
                 <li class="px-3 py-2 border-l-4 border-musgo bg-menta">zoey</li>
                 <li class="px-3 py-2 border-l-4 border-musgo bg-menta">Simba (o gato)</li>
-                <li class="px-3 py-2 border-l-4 border-musgo bg-menta">mae</li>
+                <li class="px-3 py-2 border-l-4 border-musgo bg-menta">mãe</li>
                 <li class="px-3 py-2 border-l-4 border-musgo bg-menta">o time de cheer todo</li>
                 <li class="px-3 py-2 border-l-4 border-musgo bg-menta">Djavan</li>
               </ul>

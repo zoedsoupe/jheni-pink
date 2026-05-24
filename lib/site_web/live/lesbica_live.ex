@@ -5,25 +5,25 @@ defmodule SiteWeb.LesbicaLive do
     %{
       nome: "Monique Wittig",
       tag: "francesa, 1935-2003",
-      por_que: "O Pensamento Hetero. O Corpo Lesbico. lesbicas nao sao mulheres."
+      por_que: "O Pensamento Hetero. O Corpo Lésbico. lésbicas não são mulheres."
     },
     %{
       nome: "Audre Lorde",
       tag: "americana, 1934-1992",
-      por_que: "poeta, negra, lesbica, mae. Sister Outsider. o erotico como poder."
+      por_que: "poeta, negra, lésbica, mãe. Sister Outsider. o erótico como poder."
     },
     %{
-      nome: "Gloria Anzaldua",
+      nome: "Gloria Anzaldúa",
       tag: "chicana, 1942-2004",
       por_que: "Borderlands/La Frontera. fronteira como corpo, corpo como fronteira."
     },
     %{
       nome: "Cassandra Rios",
       tag: "brasileira, 1932-2002",
-      por_que: "primeira lesbica best-seller do Brasil. censurada pela ditadura. heroina."
+      por_que: "primeira lésbica best-seller do Brasil. censurada pela ditadura. heroína."
     },
     %{
-      nome: "Pagu (Patricia Galvao)",
+      nome: "Pagu (Patrícia Galvão)",
       tag: "brasileira, 1910-1962",
       por_que: "comunista, escritora, presa, modernista. parque industrial."
     }
@@ -31,7 +31,7 @@ defmodule SiteWeb.LesbicaLive do
 
   @recs %{
     livros: [
-      "O Corpo Lesbico -- Monique Wittig",
+      "O Corpo Lésbico -- Monique Wittig",
       "Stone Butch Blues -- Leslie Feinberg",
       "Carol -- Patricia Highsmith",
       "Sister Outsider -- Audre Lorde"
@@ -43,8 +43,8 @@ defmodule SiteWeb.LesbicaLive do
       "But I'm a Cheerleader (1999)"
     ],
     musicas: [
-      "Ana Vitoria -- discografia inteira",
-      "Joao -- Supernova",
+      "Ana Vitória -- discografia inteira",
+      "João -- Supernova",
       "girl in red -- tudo",
       "Tegan and Sara -- tudo"
     ]
@@ -53,7 +53,7 @@ defmodule SiteWeb.LesbicaLive do
   def mount(_params, _session, socket) do
     {:ok,
      socket
-     |> assign(page_title: "lesbica")
+     |> assign(page_title: "lésbica")
      |> assign(ancestrais: @ancestrais)
      |> assign(recs: @recs)}
   end
@@ -73,7 +73,7 @@ defmodule SiteWeb.LesbicaLive do
       <div class="max-w-3xl mx-auto">
         <header class="card-y2k text-center mb-6 shadow-deep">
           <span class="font-pixel text-3xl block mb-2 text-sunset-rose">===== ===== =====</span>
-          <h1 class="wordart-sunset text-4xl sm:text-6xl mb-2">lesbica</h1>
+          <h1 class="wordart-sunset text-4xl sm:text-6xl mb-2">lésbica</h1>
           <p class="font-pixel text-vinho-soft text-base">
             *~* bandeira ao alto, peito aberto *~*
           </p>
@@ -81,7 +81,7 @@ defmodule SiteWeb.LesbicaLive do
 
         <div class="bg-sunset-rose text-cream py-2 border-4 border-vinho shadow-cute mb-6 marquee">
           <span class="marquee-inner font-bubblegum text-xl">
-            *~*~* monogamicas, monogamicas everywhere *~*~* mas nem uma gota pra namorar *~*~* (Shay, II Coloquio, palestrante linda + monogamica rsrs) *~*~*
+            *~*~* monogâmicas, monogâmicas everywhere *~*~* mas nem uma gota pra namorar *~*~* (Shay, II Colóquio, palestrante linda + monogâmica rsrs) *~*~*
           </span>
         </div>
 
@@ -90,12 +90,12 @@ defmodule SiteWeb.LesbicaLive do
             manifesto pequenininho
           </h2>
           <p class="font-comic text-vinho text-base leading-relaxed">
-            ser lesbica nao e so quem a gente ama -- e como a gente olha pro
-            mundo. e construir afeto fora do roteiro pronto, inventar familia
-            onde nao tinha, levar a serio o desejo das mulheres por mulheres
-            como ponto de partida e nao parentese. e bandeira, mas tambem e
-            sofa de domingo. e politica, mas tambem e bilhete na geladeira.
-            e estar viva no proprio corpo, sem pedir licenca pra ninguem.
+            ser lésbica não é só quem a gente ama -- é como a gente olha pro
+            mundo. é construir afeto fora do roteiro pronto, inventar família
+            onde não tinha, levar a sério o desejo das mulheres por mulheres
+            como ponto de partida e não parêntese. é bandeira, mas também é
+            sofá de domingo. é política, mas também é bilhete na geladeira.
+            é estar viva no próprio corpo, sem pedir licença pra ninguém.
           </p>
         </section>
 
@@ -133,7 +133,7 @@ defmodule SiteWeb.LesbicaLive do
 
           <div class="card-y2k">
             <h3 class="font-bubblegum text-pink text-xl mb-3 border-b-2 border-bubblegum border-dashed pb-2">
-              musicas
+              músicas
             </h3>
             <ul class="font-comic text-vinho text-base flex flex-col gap-2">
               <li :for={item <- @recs.musicas}>- {item}</li>
@@ -143,10 +143,10 @@ defmodule SiteWeb.LesbicaLive do
 
         <section class="bg-sunset-gradient border-4 border-vinho shadow-cute p-6 text-center">
           <p class="font-bubblegum text-cream text-2xl">
-            o mundo seria melhor com mais lesbicas
+            o mundo seria melhor com mais lésbicas
           </p>
           <p class="font-pixel text-cream text-base mt-2">
-            -- gente serie A, certeza
+            -- gente série A, certeza
           </p>
         </section>
       </div>

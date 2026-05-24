@@ -31,7 +31,7 @@ defmodule SiteWeb.SplashLive do
 
       <div class="flex items-center justify-center" style="min-height: calc(100vh - 3.5rem); min-height: calc(100dvh - 3.5rem);">
         <div class="text-center w-full max-w-lg relative z-10 p-6">
-          <p class="font-pixel text-cream text-base mb-2 tracking-wider">*~* pagina pessoal da *~*</p>
+          <p class="font-pixel text-cream text-base mb-2 tracking-wider">*~* página pessoal da *~*</p>
           <h1 class="wordart text-6xl sm:text-7xl mb-3">jheni.pink</h1>
           <p class="font-pixel text-cream text-lg mb-8 tracking-wider">
             Jhenifer M. ~ Campos ~ desde 2026

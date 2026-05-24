@@ -55,7 +55,7 @@ defmodule SiteWeb.MenuLive do
                 <span class="font-pixel text-sunset-rose gif-bounce inline-block">( O )</span>
               </li>
               <li class="flex justify-between border-b border-dashed border-mostarda pb-2">
-                <span class="font-bubblegum">cafe</span>
+                <span class="font-bubblegum">café</span>
                 <span class="font-pixel text-sunset-rose">~~~</span>
               </li>
               <li class="flex justify-between">
@@ -87,24 +87,24 @@ defmodule SiteWeb.MenuLive do
 
         <section class="bg-vinho border-4 border-mostarda shadow-deep p-5 mb-6">
           <h2 class="font-pixel text-mostarda text-3xl mb-3 text-center uppercase tracking-wider">
-            ! nao servimos !
+            ! não servimos !
           </h2>
           <ul class="font-bubblegum text-cream text-xl text-center flex flex-col gap-2">
             <li>X berinjela X</li>
             <li>X risoto X</li>
           </ul>
           <p class="font-pixel text-limao text-base text-center mt-3">
-            [ se insistir, sera convidada a se retirar ]
+            [ se insistir, será convidada a se retirar ]
           </p>
         </section>
 
         <section class="card-y2k">
           <h2 class="font-bubblegum text-pink text-2xl mb-3 border-b-2 border-bubblegum border-dashed pb-2">
-            proximos pratos
+            próximos pratos
           </h2>
           <ul class="font-comic text-vinho text-base flex flex-col gap-1">
             <li>- panquequinha de domingo</li>
-            <li>- macarrao da vovo</li>
+            <li>- macarrão da vovó</li>
             <li>- bolinho de chuva pra dia frio</li>
             <li>- + ideias da chef em desenvolvimento</li>
           </ul>

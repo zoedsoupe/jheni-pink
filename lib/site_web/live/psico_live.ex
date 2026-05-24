@@ -6,26 +6,26 @@ defmodule SiteWeb.PsicoLive do
       area: "Fenomenologia",
       cor: "bg-bubblegum",
       autores: [
-        %{nome: "Edmund Husserl", obra: "Investigacoes Logicas / Ideias"},
-        %{nome: "Maurice Merleau-Ponty", obra: "Fenomenologia da Percepcao"},
+        %{nome: "Edmund Husserl", obra: "Investigações Lógicas / Ideias"},
+        %{nome: "Maurice Merleau-Ponty", obra: "Fenomenologia da Percepção"},
         %{nome: "Martin Heidegger", obra: "Ser e Tempo"}
       ]
     },
     %{
-      area: "Genero & Sexualidade",
+      area: "Gênero & Sexualidade",
       cor: "bg-menta",
       autores: [
-        %{nome: "Judith Butler", obra: "Problemas de Genero / Corpos que Importam"},
-        %{nome: "Monique Wittig", obra: "O Pensamento Hetero / O Corpo Lesbico"},
+        %{nome: "Judith Butler", obra: "Problemas de Gênero / Corpos que Importam"},
+        %{nome: "Monique Wittig", obra: "O Pensamento Hetero / O Corpo Lésbico"},
         %{nome: "Simone de Beauvoir", obra: "O Segundo Sexo"},
-        %{nome: "Gayle Rubin", obra: "Pensando o Sexo / Trafego de Mulheres"}
+        %{nome: "Gayle Rubin", obra: "Pensando o Sexo / Tráfego de Mulheres"}
       ]
     },
     %{
-      area: "Filosofia da Diferenca",
+      area: "Filosofia da Diferença",
       cor: "bg-mostarda",
       autores: [
-        %{nome: "Gilles Deleuze & Felix Guattari", obra: "Mil Platos / Anti-Edipo"}
+        %{nome: "Gilles Deleuze & Felix Guattari", obra: "Mil Platôs / Anti-Édipo"}
       ]
     }
   ]
@@ -51,7 +51,7 @@ defmodule SiteWeb.PsicoLive do
 
         <div class="bg-sunset-rose text-cream py-2 border-4 border-vinho shadow-cute mb-6 marquee">
           <span class="marquee-inner font-bubblegum text-xl">
-            *~* o corpo nao mente *~* o sexo nao e natural *~* o genero e performativo *~* devir mulher devir lesbica *~* fenomenologia e meu lugar feliz *~*
+            *~* o corpo não mente *~* o sexo não é natural *~* o gênero é performativo *~* devir mulher devir lésbica *~* fenomenologia é meu lugar feliz *~*
           </span>
         </div>
 
@@ -69,12 +69,12 @@ defmodule SiteWeb.PsicoLive do
 
         <section class="bg-sunset-gradient border-4 border-vinho shadow-cute p-6 mb-6">
           <h2 class="font-bubblegum text-cream text-3xl mb-2">
-            II Coloquio de Fenomenologia Clinica
+            II Colóquio de Fenomenologia Clínica
           </h2>
           <p class="font-pixel text-cream text-lg mb-2">21-22 de maio de 2026 -- UFF Campos</p>
           <p class="font-comic text-cream text-base leading-relaxed">
             dois dias de palestra, mesa redonda e gente brilhante falando de
-            corpo, clinica e mundo-vivido. saiu de la com a cabeca cheia e o
+            corpo, clínica e mundo-vivido. saí de lá com a cabeça cheia e o
             caderno mais cheio ainda. Husserl seria a primeira pessoa na
             festa.
           </p>
@@ -86,8 +86,8 @@ defmodule SiteWeb.PsicoLive do
             agora lendo
           </h2>
           <p class="font-comic text-vinho text-base leading-relaxed">
-            esse cantinho fica reservado pro livro do mes -- ainda em obra
-            mas em breve com resenha curtinha sobre o que ta na mesa de
+            esse cantinho fica reservado pro livro do mês -- ainda em obra
+            mas em breve com resenha curtinha sobre o que tá na mesa de
             cabeceira.
           </p>
           <p class="font-pixel text-sunset-rose text-base mt-2">[ to-do: jhene recomenda ]</p>

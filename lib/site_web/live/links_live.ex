@@ -3,21 +3,21 @@ defmodule SiteWeb.LinksLive do
 
   @musicas [
     %{
-      artista: "Joao",
+      artista: "João",
       album: "Supernova",
-      vibe: "album que mora no replay",
+      vibe: "álbum que mora no replay",
       url: "https://open.spotify.com/search/Joao%20Supernova"
     },
     %{
-      artista: "Ana Vitoria",
+      artista: "Ana Vitória",
       album: "discografia inteira",
-      vibe: "voz que abraca, show dia 05/06",
+      vibe: "voz que abraça, show dia 05/06",
       url: "https://open.spotify.com/search/Ana%20Vitoria"
     },
     %{
       artista: "Baco Exu do Blues",
       album: "Bluesman + tudo o resto",
-      vibe: "letra que e tese, beat que e soco",
+      vibe: "letra que é tese, beat que é soco",
       url: "https://open.spotify.com/search/Baco%20Exu%20do%20Blues"
     }
   ]
@@ -25,7 +25,7 @@ defmodule SiteWeb.LinksLive do
   @sites_favoritos [
     %{nome: "neocities.org", url: "https://neocities.org", desc: "internet de antigamente"},
     %{nome: "are.na", url: "https://are.na", desc: "mood board sem algoritmo"},
-    %{nome: "ASCII art archive", url: "https://www.asciiart.eu/", desc: "fonte de inspiracao infinita"}
+    %{nome: "ASCII art archive", url: "https://www.asciiart.eu/", desc: "fonte de inspiração infinita"}
   ]
 
   def mount(_params, _session, socket) do
@@ -44,13 +44,13 @@ defmodule SiteWeb.LinksLive do
           <span class="font-pixel text-5xl block mb-2 text-pink">&lt;=&gt;</span>
           <h1 class="wordart text-4xl sm:text-5xl mb-2">os links</h1>
           <p class="font-pixel text-vinho-soft text-base">
-            *~* musica + sites + tudo que eu salvo *~*
+            *~* música + sites + tudo que eu salvo *~*
           </p>
         </header>
 
         <div class="bg-limao text-vinho py-2 border-4 border-vinho shadow-cute mb-6 marquee">
           <span class="marquee-inner font-bubblegum text-xl">
-            *~*~* fone no maximo *~*~* aba do navegador sempre aberta *~*~* clica que abre em outra janela *~*~*
+            *~*~* fone no máximo *~*~* aba do navegador sempre aberta *~*~* clica que abre em outra janela *~*~*
           </span>
         </div>
 

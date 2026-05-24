@@ -139,7 +139,7 @@ defmodule SiteWeb.LivroLive do
                 type="text"
                 name={@form[:nome].name}
                 value={Phoenix.HTML.Form.normalize_value("text", @form[:nome].value)}
-                placeholder="quem ta aqui?"
+                placeholder="quem tá aqui?"
                 maxlength="40"
                 class="w-full p-3 border-3 border-vinho bg-cream font-comic text-base"
               />
@@ -152,7 +152,7 @@ defmodule SiteWeb.LivroLive do
                 name={@form[:mensagem].name}
                 rows="4"
                 maxlength="500"
-                placeholder="oi jhene! seu site e..."
+                placeholder="oi jhene! seu site é..."
                 class="w-full p-3 border-3 border-vinho bg-cream font-comic text-base"
               >{Phoenix.HTML.Form.normalize_value("textarea", @form[:mensagem].value)}</textarea>
               <p :for={msg <- errors(@form[:mensagem])} class="font-pixel text-sunset-rose text-base mt-1">{msg}</p>
@@ -183,7 +183,7 @@ defmodule SiteWeb.LivroLive do
 
             <div class="bg-mostarda border-3 border-dashed border-vinho p-3">
               <label class="font-bubblegum text-vinho text-base block mb-1">
-                pra provar que voce nao e robo:
+                pra provar que você não é robô:
               </label>
               <div class="flex items-center gap-2 font-pixel text-vinho text-2xl">
                 <span>{@captcha_a} + {@captcha_b} =</span>
@@ -204,7 +204,7 @@ defmodule SiteWeb.LivroLive do
         </section>
 
         <section>
-          <h2 class="font-bubblegum text-pink text-3xl mb-4 text-center">~* o que ja deixaram *~</h2>
+          <h2 class="font-bubblegum text-pink text-3xl mb-4 text-center">~* o que já deixaram *~</h2>
 
           <ul :if={@entries != []} class="flex flex-col gap-4">
             <li
@@ -227,7 +227,7 @@ defmodule SiteWeb.LivroLive do
           </ul>
 
           <p :if={@entries == []} class="font-pixel text-vinho-soft text-center text-lg">
-            ainda ninguem assinou. seja a/o primeira/o!
+            ainda ninguém assinou. seja a/o primeira/o!
           </p>
         </section>
       </div>

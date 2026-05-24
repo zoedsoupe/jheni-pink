@@ -5,13 +5,13 @@ defmodule SiteWeb.CheerLive do
     %{
       data: "25/10/2025",
       local: "Riocentro - RJ",
-      time: "Winter (nivel 2)",
+      time: "Winter (nível 2)",
       hora: "13h16"
     },
     %{
       data: "25/10/2025",
       local: "Riocentro - RJ",
-      time: "Knight (nivel 3)",
+      time: "Knight (nível 3)",
       hora: "15h00"
     }
   ]
@@ -39,7 +39,7 @@ defmodule SiteWeb.CheerLive do
 
         <div class="bg-mostarda text-vinho py-2 border-4 border-vinho shadow-cute mb-6 marquee">
           <span class="marquee-inner font-bubblegum text-xl">
-            *~*~* READY? OK! *~*~* 5-6-7-8 *~*~* all-star competitivo *~*~* equipe e familia *~*~* Riocentro 2025 *~*~*
+            *~*~* READY? OK! *~*~* 5-6-7-8 *~*~* all-star competitivo *~*~* equipe é família *~*~* Riocentro 2025 *~*~*
           </span>
         </div>
 
@@ -48,14 +48,14 @@ defmodule SiteWeb.CheerLive do
           <dl class="grid grid-stats gap-2 text-base">
             <dt class="font-bubblegum text-sunset-rose">modalidade</dt>
             <dd>all-star</dd>
-            <dt class="font-bubblegum text-sunset-rose">nivel 2</dt>
+            <dt class="font-bubblegum text-sunset-rose">nível 2</dt>
             <dd>Winter team</dd>
-            <dt class="font-bubblegum text-sunset-rose">nivel 3</dt>
+            <dt class="font-bubblegum text-sunset-rose">nível 3</dt>
             <dd>Knight team</dd>
-            <dt class="font-bubblegum text-sunset-rose">posicao</dt>
+            <dt class="font-bubblegum text-sunset-rose">posição</dt>
             <dd>flyer / base (depende do stunt)</dd>
             <dt class="font-bubblegum text-sunset-rose">treina</dt>
-            <dd>varias vezes na semana, sem dor sem ganho</dd>
+            <dd>várias vezes na semana, sem dor sem ganho</dd>
           </dl>
         </section>
 
@@ -65,7 +65,7 @@ defmodule SiteWeb.CheerLive do
             <li :for={c <- @campeonatos} class="px-4 py-3 border-l-4 border-sunset-rose bg-bubblegum">
               <div class="font-bubblegum text-vinho text-xl">{c.time}</div>
               <div class="font-pixel text-vinho-soft text-base">{c.data} -- {c.local}</div>
-              <div class="font-pixel text-sunset-rose text-base">competiu as {c.hora}</div>
+              <div class="font-pixel text-sunset-rose text-base">competiu às {c.hora}</div>
             </li>
           </ul>
         </section>
@@ -73,9 +73,9 @@ defmodule SiteWeb.CheerLive do
         <section class="bg-sunset-gradient border-4 border-vinho shadow-cute p-6 text-center mb-6">
           <h2 class="font-bubblegum text-cream text-3xl mb-3">minha equipe</h2>
           <p class="font-comic text-cream text-lg leading-relaxed">
-            equipe e familia. a gente cai junto, levanta junto, ganha junto e
-            chora junto. obrigada por cada stunt, cada grito, cada abraco
-            depois da apresentacao.
+            equipe é família. a gente cai junto, levanta junto, ganha junto e
+            chora junto. obrigada por cada stunt, cada grito, cada abraço
+            depois da apresentação.
           </p>
           <p class="font-pixel text-cream text-2xl mt-4">[ Winter &lt;3 Knight ]</p>
         </section>
