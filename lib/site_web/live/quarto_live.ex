@@ -48,10 +48,7 @@ defmodule SiteWeb.QuartoLive do
 
   defp default_for("top5") do
     """
-    zoey
-    mãe
-    o time de cheer todo
-    Djavan
+    
     """
     |> String.trim()
   end

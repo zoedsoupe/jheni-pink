@@ -33,7 +33,7 @@ defmodule SiteWeb.CheerLive do
   defp default_for("stats") do
     """
     modalidade | all-star
-    formato | partner stunt
+    atua em | partner stunt + equipe all-girl
     níveis | 2 e 3
     treina | várias vezes na semana, sem dor sem ganho
     """
