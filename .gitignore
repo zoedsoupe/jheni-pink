@@ -42,3 +42,13 @@ npm-debug.log
 
 .env
 /.claude/
+
+# Digested static assets (output of `mix phx.digest`, regenerated each build)
+/priv/static/**/*.gz
+/priv/static/assets/css/app-*.css
+/priv/static/favicon-*.ico
+/priv/static/robots-*.txt
+/priv/static/images/logo-*.svg
+
+# User-uploaded photos (live on the fly volume in prod, on disk in dev)
+/priv/static/uploads/
