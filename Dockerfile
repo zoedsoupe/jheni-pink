@@ -1,8 +1,12 @@
 # Multi-stage Phoenix release for jheni.pink (sqlite, no node).
 # Update ARG tags if you bump Elixir/OTP/Debian. Match your local versions.
+#
+# Use bookworm (glibc 2.36) not bullseye (glibc 2.31): exqlite ships
+# precompiled NIFs that require glibc >= 2.33, so bullseye runtime crashes
+# at boot with `version GLIBC_2.33 not found` when loading sqlite3_nif.so.
 ARG ELIXIR_VERSION=1.19.5
-ARG OTP_VERSION=28.1.2
-ARG DEBIAN_VERSION=bookworm-20251028-slim
+ARG OTP_VERSION=28.1.1
+ARG DEBIAN_VERSION=bookworm-20260518-slim
 
 ARG BUILDER_IMAGE="hexpm/elixir:${ELIXIR_VERSION}-erlang-${OTP_VERSION}-debian-${DEBIAN_VERSION}"
 ARG RUNNER_IMAGE="debian:${DEBIAN_VERSION}"
@@ -57,16 +61,19 @@ RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen
 ENV LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8
 
 WORKDIR /app
-RUN chown nobody /app
 
-# default location of the sqlite volume (also referenced by fly.toml [mounts])
+# default location of the sqlite volume + photo uploads (also referenced by
+# fly.toml [mounts])
 ENV DATABASE_PATH=/data/site.db
-RUN mkdir -p /data && chown nobody /data
+RUN mkdir -p /data /data/uploads/photos
 
 # only the compiled release artifact -- no source, no deps, no mix
 ENV MIX_ENV=prod
-COPY --from=builder --chown=nobody:root /app/_build/${MIX_ENV}/rel/site ./
+COPY --from=builder /app/_build/${MIX_ENV}/rel/site ./
 
-USER nobody
+# NOTE: container runs as root. The fly.io volume mounted at /data is owned
+# by root on first mount, and the app needs to read/write both site.db and
+# /data/uploads. For a single-tenant hobby site this is acceptable; a
+# multi-user app would want a proper init step to drop privileges.
 
 CMD ["/app/bin/server"]

@@ -75,6 +75,10 @@ defmodule Site.MixProject do
       "assets.setup": ["esbuild.install --if-missing"],
       "assets.build": ["compile", "esbuild site"],
       "assets.deploy": [
+        # `compile` populates _build/.../phoenix-colocated/site which is the
+        # virtual package imported by js/app.js (LiveView 1.1 colocated hooks).
+        # Without this, esbuild fails to resolve the import in prod builds.
+        "compile",
         "esbuild site --minify",
         "phx.digest"
       ],

@@ -2,7 +2,7 @@
 # Update PHX_HOST + app name after `flyctl apps create`.
 
 app = "jheni-pink"
-primary_region = "gig"
+primary_region = "gru"
 
 [build]
   dockerfile = "Dockerfile"
