@@ -28,7 +28,7 @@ defmodule SiteWeb.SplashLive do
     {:ok,
      socket
      |> assign(
-       page_title: "jeni",
+       page_title: "Jhene",
        decos: @decos,
        editing_key: nil,
        raw_block: nil
@@ -46,12 +46,12 @@ defmodule SiteWeb.SplashLive do
   end
 
   defp default_for("marquee") do
-    "*~*~*~* bem-vinda ao jeni ponto pink *~*~*~* deixa um recado no livro *~*~*~* no ar desde 2026 *~*~*~* beijinhos zoey *~*~*~*"
+    "*~*~*~* deixa um recado no livro *~*~*~* no ar desde 2026 *~*~*~* beijinhos da zoey!! *~*~*~*"
   end
 
   defp default_for("tagline"), do: "*~* página pessoal da *~*"
-  defp default_for("subtitle"), do: "jhene ~ mineira ~ desde 2026"
-  defp default_for("footer_note"), do: "melhor visto em 1024x768 :)"
+  defp default_for("subtitle"), do: "mineira ~ psico"
+  defp default_for("footer_note"), do: "melhor visto num computador ^^"
   defp default_for(_), do: ""
 
   def render(assigns) do
@@ -90,7 +90,7 @@ defmodule SiteWeb.SplashLive do
             <p class="font-pixel text-cream text-base tracking-wider">{@tagline}</p>
           </.editable>
 
-          <h1 class="wordart text-7xl sm:text-7xl mb-3">jeni</h1>
+          <h1 class="wordart text-7xl sm:text-7xl mb-3">jhene</h1>
 
           <.editable
             id="splash-subtitle"

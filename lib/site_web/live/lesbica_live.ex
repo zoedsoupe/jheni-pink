@@ -24,8 +24,7 @@ defmodule SiteWeb.LesbicaLive do
       ancestrais: Site.Rooms.value(@room, "ancestrais", default_for("ancestrais")),
       livros: Site.Rooms.value(@room, "livros", default_for("livros")),
       filmes: Site.Rooms.value(@room, "filmes", default_for("filmes")),
-      musicas: Site.Rooms.value(@room, "musicas", default_for("musicas")),
-      closing: Site.Rooms.value(@room, "closing", default_for("closing"))
+      musicas: Site.Rooms.value(@room, "musicas", default_for("musicas"))
     )
   end
 
@@ -95,15 +94,6 @@ defmodule SiteWeb.LesbicaLive do
     """
     Ana Vitória -- discografia inteira
     Jão -- Supernova
-    """
-    |> String.trim()
-  end
-
-  defp default_for("closing") do
-    """
-    o mundo seria melhor com mais lésbicas
-
-    -- gente série A, certeza
     """
     |> String.trim()
   end
@@ -245,24 +235,6 @@ defmodule SiteWeb.LesbicaLive do
               </ul>
             </.editable>
           </div>
-        </section>
-
-        <section class="bg-sunset-gradient border-4 border-vinho shadow-cute p-6 text-center">
-          <.editable
-            id="lesbica-closing"
-            key="closing"
-            authed={@jhene_authorized}
-            editing_key={@editing_key}
-            raw={@raw_block}
-            rows={4}
-            hint="frase + assinatura"
-          >
-            <div class="flex flex-col gap-2">
-              <p :for={{para, i} <- Enum.with_index(Site.Rooms.paragraphs(@closing))} class={
-                if i == 0, do: "font-bubblegum text-cream text-2xl", else: "font-pixel text-cream text-base"
-              }>{para}</p>
-            </div>
-          </.editable>
         </section>
       </div>
 

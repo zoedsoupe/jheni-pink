@@ -34,7 +34,7 @@ defmodule SiteWeb.LinksLive do
     artista: Jão
     album: Supernova
     vibe: álbum que mora no replay
-    url: https://open.spotify.com/search/jao%20Supernova
+    url: https://open.spotify.com/album/3MN8yWquVuWoOM0DOLRXsf?si=d1b57357b3254967
 
     artista: Ana Vitória
     album: discografia inteira
@@ -111,9 +111,6 @@ defmodule SiteWeb.LinksLive do
               </li>
             </ul>
           </.editable>
-          <p class="font-pixel text-vinho-soft text-base mt-4 text-center">
-            [ embed real do spotify em breve, por enquanto: clica que abre ]
-          </p>
         </section>
 
         <section class="card-y2k mb-6">
@@ -138,11 +135,6 @@ defmodule SiteWeb.LinksLive do
               </li>
             </ul>
           </.editable>
-        </section>
-
-        <section class="bg-sunset-gradient border-4 border-vinho shadow-cute p-6 text-center">
-          <p class="font-bubblegum text-cream text-2xl mb-2">powered by ASCII + amor</p>
-          <p class="font-pixel text-cream text-base">[ &lt;3 ] [ &lt;3 ] [ &lt;3 ]</p>
         </section>
       </div>
 
