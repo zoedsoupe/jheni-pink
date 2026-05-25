@@ -26,5 +26,9 @@ config :swoosh, local: false
 # Do not print debug messages in production
 config :logger, level: :info
 
+# Photo uploads live on the Fly volume mounted at /data so they survive
+# deploys. Plug.Static serves them at /uploads via SiteWeb.Endpoint.
+config :site, :uploads_dir, "/data/uploads"
+
 # Runtime production configuration, including reading
 # of environment variables, is done on config/runtime.exs.

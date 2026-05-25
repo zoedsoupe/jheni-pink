@@ -15,6 +15,17 @@ defmodule SiteWeb.Endpoint do
     websocket: [connect_info: [:peer_data, session: @session_options]],
     longpoll: [connect_info: [:peer_data, session: @session_options]]
 
+  # User-uploaded photos. Path is compile-time, defaulting to the dev
+  # location under priv/static/uploads. Prod overrides it to the Fly
+  # volume mount in config/prod.exs.
+  # Must run BEFORE the "/" Plug.Static below so /uploads/* doesn't trip
+  # the :only / :raise_on_missing_only check on the priv/static plug.
+  plug Plug.Static,
+    at: "/uploads",
+    from: Application.compile_env(:site, :uploads_dir, {:site, "priv/static/uploads"}),
+    gzip: false,
+    only: ~w(photos)
+
   # Serve at "/" the static files from "priv/static" directory.
   #
   # When code reloading is disabled (e.g., in production),

@@ -7,6 +7,9 @@ defmodule Site.Application do
 
   @impl true
   def start(_type, _args) do
+    # ensure photo uploads dir exists before the endpoint accepts requests
+    Site.Albums.ensure_photos_dir!()
+
     children = [
       SiteWeb.Telemetry,
       Site.Repo,

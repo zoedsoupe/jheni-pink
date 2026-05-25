@@ -31,6 +31,7 @@ defmodule SiteWeb.Router do
       live "/livro", LivroLive, :index
       live "/links", LinksLive, :index
       live "/diario", DiarioLive, :index
+      live "/album", AlbumLive, :index
     end
   end
 
