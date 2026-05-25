@@ -82,6 +82,7 @@ defmodule SiteWeb.LesbicaLive do
 
   defp default_for("filmes") do
     """
+    (recomendacoes)
     Carol (2015)
     Retrato de uma jovem em chamas (2019)
     Disobedience (2017)
@@ -93,9 +94,7 @@ defmodule SiteWeb.LesbicaLive do
   defp default_for("musicas") do
     """
     Ana Vitória -- discografia inteira
-    João -- Supernova
-    girl in red -- tudo
-    Tegan and Sara -- tudo
+    Jão -- Supernova
     """
     |> String.trim()
   end

@@ -31,10 +31,10 @@ defmodule SiteWeb.LinksLive do
 
   defp default_for("musicas") do
     """
-    artista: João
+    artista: Jão
     album: Supernova
     vibe: álbum que mora no replay
-    url: https://open.spotify.com/search/Joao%20Supernova
+    url: https://open.spotify.com/search/jao%20Supernova
 
     artista: Ana Vitória
     album: discografia inteira
@@ -51,17 +51,9 @@ defmodule SiteWeb.LinksLive do
 
   defp default_for("sites") do
     """
-    nome: neocities.org
-    url: https://neocities.org
-    desc: internet de antigamente
-
-    nome: are.na
-    url: https://are.na
-    desc: mood board sem algoritmo
-
-    nome: ASCII art archive
-    url: https://www.asciiart.eu/
-    desc: fonte de inspiração infinita
+    nome: meu insta
+    url: https://instagram.com/sweet.jhee
+    desc: meu diario fotografico
     """
     |> String.trim()
   end
