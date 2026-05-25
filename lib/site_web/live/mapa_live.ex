@@ -49,7 +49,7 @@ defmodule SiteWeb.MapaLive do
     ~H"""
     <main class="bg-mapa min-h-screen px-4 py-6 pb-20">
       <header class="text-center mb-8">
-        <h1 class="wordart text-5xl sm:text-6xl mb-2">jheni.pink</h1>
+        <h1 class="wordart text-5xl sm:text-6xl mb-2">jeni</h1>
         <.editable
           id="mapa-subtitle"
           key="subtitle"

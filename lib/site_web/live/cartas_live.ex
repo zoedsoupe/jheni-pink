@@ -61,26 +61,26 @@ defmodule SiteWeb.CartasLive do
           <p class="font-bubblegum text-sunset-rose text-lg">{Phoenix.Flash.get(@flash, :error)}</p>
         </div>
 
-        <nav class="flex gap-2 mb-6 justify-center">
+        <nav class="flex gap-3 mb-6 justify-center">
           <button
             phx-click="switch_tab"
             phx-value-tab="poemas"
             class={[
-              "px-4 py-2 border-3 border-vinho font-bubblegum text-xl shadow-cute",
-              if(@tab == "poemas", do: "bg-vinho text-mostarda", else: "bg-cream text-vinho")
+              "btn-y2k",
+              if(@tab != "poemas", do: "btn-y2k-alt", else: "")
             ]}
           >
-            poemas
+            &gt;&gt; poemas &lt;&lt;
           </button>
           <button
             phx-click="switch_tab"
             phx-value-tab="missoes"
             class={[
-              "px-4 py-2 border-3 border-vinho font-bubblegum text-xl shadow-cute",
-              if(@tab == "missoes", do: "bg-vinho text-mostarda", else: "bg-cream text-vinho")
+              "btn-y2k",
+              if(@tab != "missoes", do: "btn-y2k-alt", else: "")
             ]}
           >
-            missões
+            &gt;&gt; missões &lt;&lt;
           </button>
         </nav>
 

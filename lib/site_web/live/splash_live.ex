@@ -39,7 +39,9 @@ defmodule SiteWeb.SplashLive do
   defp assign_content(socket) do
     assign(socket,
       marquee: Site.Rooms.value(@room, "marquee", default_for("marquee")),
-      subtitle: Site.Rooms.value(@room, "subtitle", default_for("subtitle"))
+      tagline: Site.Rooms.value(@room, "tagline", default_for("tagline")),
+      subtitle: Site.Rooms.value(@room, "subtitle", default_for("subtitle")),
+      footer_note: Site.Rooms.value(@room, "footer_note", default_for("footer_note"))
     )
   end
 
@@ -47,7 +49,9 @@ defmodule SiteWeb.SplashLive do
     "*~*~*~* bem-vinda ao jeni ponto pink *~*~*~* deixa um recado no livro *~*~*~* no ar desde 2026 *~*~*~* beijinhos zoey *~*~*~*"
   end
 
+  defp default_for("tagline"), do: "*~* página pessoal da *~*"
   defp default_for("subtitle"), do: "jhene ~ mineira ~ desde 2026"
+  defp default_for("footer_note"), do: "melhor visto em 1024x768 :)"
   defp default_for(_), do: ""
 
   def render(assigns) do
@@ -73,7 +77,19 @@ defmodule SiteWeb.SplashLive do
 
       <div class="flex items-center justify-center" style="min-height: calc(100vh - 3.5rem); min-height: calc(100dvh - 3.5rem);">
         <div class="text-center w-full max-w-lg relative z-10 p-6">
-          <p class="font-pixel text-cream text-base mb-2 tracking-wider">*~* página pessoal da *~*</p>
+          <.editable
+            id="splash-tagline"
+            key="tagline"
+            authed={@jhene_authorized}
+            editing_key={@editing_key}
+            raw={@raw_block}
+            rows={2}
+            hint="linha em cima do nome"
+            class="mb-2"
+          >
+            <p class="font-pixel text-cream text-base tracking-wider">{@tagline}</p>
+          </.editable>
+
           <h1 class="wordart text-7xl sm:text-7xl mb-3">jeni</h1>
 
           <.editable
@@ -99,7 +115,17 @@ defmodule SiteWeb.SplashLive do
           </div>
 
           <div class="font-pixel text-cream text-sm mt-8 leading-relaxed flex flex-col items-center gap-2">
-            <span>melhor visto em 1024x768 :)</span>
+            <.editable
+              id="splash-footer-note"
+              key="footer_note"
+              authed={@jhene_authorized}
+              editing_key={@editing_key}
+              raw={@raw_block}
+              rows={2}
+              hint="frase no rodapé"
+            >
+              <span>{@footer_note}</span>
+            </.editable>
             <a href="https://zoedsoupe.zeetech.io" target="_blank" rel="noopener" class="tape no-underline">zoeyrinha @ zeetech</a>
           </div>
         </div>
