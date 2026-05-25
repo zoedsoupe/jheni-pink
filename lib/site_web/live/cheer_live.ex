@@ -33,9 +33,8 @@ defmodule SiteWeb.CheerLive do
   defp default_for("stats") do
     """
     modalidade | all-star
-    nível 2 | Winter team
-    nível 3 | Knight team
-    posição | flyer / base (depende do stunt)
+    formato | partner stunt
+    níveis | 2 e 3
     treina | várias vezes na semana, sem dor sem ganho
     """
     |> String.trim()
@@ -43,14 +42,16 @@ defmodule SiteWeb.CheerLive do
 
   defp default_for("campeonatos") do
     """
-    time: Winter (nível 2)
+    evento: Riocentro
     data: 25/10/2025
-    local: Riocentro - RJ
+    local: RJ
+    categoria: nível 2 (all girl)
     hora: 13h16
 
-    time: Knight (nível 3)
+    evento: Riocentro
     data: 25/10/2025
-    local: Riocentro - RJ
+    local: RJ
+    categoria: nível 3
     hora: 15h00
     """
     |> String.trim()
@@ -125,11 +126,11 @@ defmodule SiteWeb.CheerLive do
             editing_key={@editing_key}
             raw={@raw_block}
             rows={14}
-            hint="cada campeonato: linhas 'time:', 'data:', 'local:', 'hora:' separadas por linha em branco"
+            hint="cada campeonato: linhas 'evento:', 'data:', 'local:', 'categoria:', 'hora:' separadas por linha em branco"
           >
             <ul class="flex flex-col gap-3">
               <li :for={c <- Site.Rooms.records(@campeonatos)} class="px-4 py-3 border-l-4 border-sunset-rose bg-bubblegum">
-                <div class="font-bubblegum text-vinho text-xl">{c["time"]}</div>
+                <div class="font-bubblegum text-vinho text-xl">{c["evento"]} -- {c["categoria"]}</div>
                 <div class="font-pixel text-vinho-soft text-base">{c["data"]} -- {c["local"]}</div>
                 <div class="font-pixel text-sunset-rose text-base">competiu às {c["hora"]}</div>
               </li>
