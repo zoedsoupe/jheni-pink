@@ -40,15 +40,13 @@ defmodule SiteWeb.QuartoLive do
     oi, sou a Jhene! moro em Campos onde estudo psicologia na UFF. nas férias volto pra Manhuaçu, onde minha mãe me espera.
 
     cheerleader nas horas vagas - faço all-star competitivo. já competi até no Riocentro.
-
-    tenho um stack de mulheres pra discutir: Butler, Wittig, Beauvoir, Gayle Rubin, Deleuze e Guattari.
     """
     |> String.trim()
   end
 
   defp default_for("top5") do
     """
-    
+    Preencher...
     """
     |> String.trim()
   end

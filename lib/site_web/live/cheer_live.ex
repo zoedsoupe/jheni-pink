@@ -22,12 +22,11 @@ defmodule SiteWeb.CheerLive do
       marquee: Site.Rooms.value(@room, "marquee", default_for("marquee")),
       stats: Site.Rooms.value(@room, "stats", default_for("stats")),
       campeonatos: Site.Rooms.value(@room, "campeonatos", default_for("campeonatos")),
-      equipe_text: Site.Rooms.value(@room, "equipe_text", default_for("equipe_text"))
     )
   end
 
   defp default_for("marquee") do
-    "*~*~* READY? OK! *~*~* 5-6-7-8 *~*~* all-star competitivo *~*~* equipe é família *~*~* Riocentro 2025 *~*~*"
+    "*~*~* READY? OK! *~*~* 5-6-7-8 *~*~* all-star competitivo *~*~* Riocentro 2025 *~*~*"
   end
 
   defp default_for("stats") do
@@ -35,7 +34,6 @@ defmodule SiteWeb.CheerLive do
     modalidade | all-star
     atua em | partner stunt + equipe all-girl
     níveis | 2 e 3
-    treina | várias vezes na semana, sem dor sem ganho
     """
     |> String.trim()
   end
@@ -53,15 +51,6 @@ defmodule SiteWeb.CheerLive do
     local: RJ
     categoria: nível 3
     hora: 15h00
-    """
-    |> String.trim()
-  end
-
-  defp default_for("equipe_text") do
-    """
-    equipe é família. a gente cai junto, levanta junto, ganha junto e
-    chora junto. obrigada por cada stunt, cada grito, cada abraço
-    depois da apresentação.
     """
     |> String.trim()
   end
