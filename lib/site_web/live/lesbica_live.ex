@@ -29,7 +29,7 @@ defmodule SiteWeb.LesbicaLive do
   end
 
   defp default_for("marquee") do
-    "*~*~* monogâmicas, monogâmicas everywhere *~*~* mas nem uma gota pra namorar *~*~* (Shay, II Colóquio, palestrante linda + monogâmica rsrs) *~*~*"
+    "*~*~* o futuro é sáfico *~*~* lésbica é palavra de bandeira *~*~* mulher amando mulher sem pedir licença *~*~* nossas ancestrais resistiram, a gente continua *~*~* visibilidade lésbica todo dia *~*~*"
   end
 
   defp default_for("manifesto") do
