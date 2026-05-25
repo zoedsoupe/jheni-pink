@@ -21,7 +21,7 @@ defmodule SiteWeb.CheerLive do
     assign(socket,
       marquee: Site.Rooms.value(@room, "marquee", default_for("marquee")),
       stats: Site.Rooms.value(@room, "stats", default_for("stats")),
-      campeonatos: Site.Rooms.value(@room, "campeonatos", default_for("campeonatos")),
+      campeonatos: Site.Rooms.value(@room, "campeonatos", default_for("campeonatos"))
     )
   end
 
@@ -51,6 +51,12 @@ defmodule SiteWeb.CheerLive do
     local: RJ
     categoria: nível 3
     hora: 15h00
+
+    evento: Campeonato de partner stunt
+    data: 22/11/2025
+    local: RJ
+    categoria: partner stunt -- ganhou medalha
+    hora: dia todo
     """
     |> String.trim()
   end
