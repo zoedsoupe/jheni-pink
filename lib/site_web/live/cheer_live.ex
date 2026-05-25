@@ -137,24 +137,6 @@ defmodule SiteWeb.CheerLive do
           </.editable>
         </section>
 
-        <section class="bg-sunset-gradient border-4 border-vinho shadow-cute p-6 text-center mb-6">
-          <h2 class="font-bubblegum text-cream text-3xl mb-3">minha equipe</h2>
-          <.editable
-            id="cheer-equipe-text"
-            key="equipe_text"
-            authed={@jhene_authorized}
-            editing_key={@editing_key}
-            raw={@raw_block}
-            rows={5}
-            hint="parágrafos separados por linha em branco"
-          >
-            <div class="font-comic text-cream text-lg leading-relaxed flex flex-col gap-2">
-              <p :for={para <- Site.Rooms.paragraphs(@equipe_text)}>{para}</p>
-            </div>
-          </.editable>
-          <p class="font-pixel text-cream text-2xl mt-4">[ Winter &lt;3 Knight ]</p>
-        </section>
-
         <section class="card-y2k text-center">
           <h2 class="font-bubblegum text-pink text-2xl mb-3">pom-pom show</h2>
           <pre class="font-pixel text-sunset-rose text-lg leading-tight inline-block text-left">     *  *  *  *  *

@@ -32,12 +32,12 @@ defmodule SiteWeb.QuartoLive do
   defp default_for("subtitle"), do: "~*~ bem-vinda à minha salinha ~*~"
 
   defp default_for("marquee") do
-    "*~*~* bem-vinda ao meu quarto *~*~* não mexe nas minhas coisas *~*~* alimenta o Simba *~*~* beijinhos *~*~*"
+    "*~*~* bem-vinda ao meu quarto *~*~* não mexe nas minhas coisas *~*~* fica à vontade *~*~* beijinhos *~*~*"
   end
 
   defp default_for("bio") do
     """
-    oi, sou a Jhene! moro em Campos onde estudo psicologia na UFF. nas férias volto pra Manhuaçu, onde minha mãe e meu Simba me esperam.
+    oi, sou a Jhene! moro em Campos onde estudo psicologia na UFF. nas férias volto pra Manhuaçu, onde minha mãe me espera.
 
     cheerleader nas horas vagas - faço all-star competitivo. já competi até no Riocentro.
 
@@ -49,7 +49,6 @@ defmodule SiteWeb.QuartoLive do
   defp default_for("top5") do
     """
     zoey
-    Simba (o gato)
     mãe
     o time de cheer todo
     Djavan
@@ -63,7 +62,6 @@ defmodule SiteWeb.QuartoLive do
     cidade | Manhuaçu / Campos
     curso | Psicologia UFF
     cheer | all-star nível 2 + 3
-    gato | Simba
     é | lésbica
     """
     |> String.trim()
