@@ -57,7 +57,9 @@ defmodule SiteWeb.SplashLive do
   def render(assigns) do
     ~H"""
     <main class="bg-splash min-h-screen relative overflow-hidden">
-      <div class="bg-vinho text-mostarda border-b-4 border-mostarda py-2 relative z-10">
+      <div class="glitter"></div>
+
+      <div class="bg-sunset-rose text-cream border-b-4 border-vinho py-2 relative z-10">
         <.editable
           id="splash-marquee"
           key="marquee"
@@ -92,10 +94,10 @@ defmodule SiteWeb.SplashLive do
             class="mb-2"
             align="center"
           >
-            <p class="font-pixel text-cream text-base tracking-wider">{@tagline}</p>
+            <p class="font-pixel text-vinho text-base tracking-wider">{@tagline}</p>
           </.editable>
 
-          <h1 class="wordart text-7xl sm:text-7xl mb-3">jhene</h1>
+          <h1 class="wordart-sunset text-7xl sm:text-7xl mb-3">jhene</h1>
 
           <.editable
             id="splash-subtitle"
@@ -108,7 +110,7 @@ defmodule SiteWeb.SplashLive do
             class="mb-8"
             align="center"
           >
-            <p class="font-pixel text-cream text-lg tracking-wider">{@subtitle}</p>
+            <p class="font-pixel text-vinho text-lg tracking-wider">{@subtitle}</p>
           </.editable>
 
           <div class="flex flex-col gap-3 items-center mb-8">
@@ -120,7 +122,7 @@ defmodule SiteWeb.SplashLive do
             </.link>
           </div>
 
-          <div class="font-pixel text-cream text-sm mt-8 leading-relaxed flex flex-col items-center gap-2">
+          <div class="font-pixel text-vinho text-sm mt-8 leading-relaxed flex flex-col items-center gap-2">
             <.editable
               id="splash-footer-note"
               key="footer_note"
