@@ -494,6 +494,14 @@ ul, ol { list-style: none; }
   padding: 6px;
   background: var(--c-cream);
 }
+.photo-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center;
+  background: var(--c-cream);
+}
 .photo-placeholder {
   width: 100%;
   aspect-ratio: 4 / 5;

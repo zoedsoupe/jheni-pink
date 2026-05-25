@@ -111,9 +111,7 @@ defmodule SiteWeb.QuartoLive do
         <div class="grid grid-1 md:grid-2 gap-4 md:items-start">
           <aside class="flex flex-col gap-4">
             <div class="photo-frame">
-              <div class="photo-placeholder">
-                foto<br />vai aqui :)
-              </div>
+              <img src="/images/jhene.png" alt="jhene" class="photo-img" />
             </div>
 
             <section class="card-y2k">
