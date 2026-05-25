@@ -85,6 +85,7 @@ defmodule SiteWeb.QuartoLive do
             raw={@raw_block}
             rows={2}
             hint="o subtítulo em cima do quarto"
+            align="center"
           >
             <p class="font-pixel text-vinho-soft text-base">{@subtitle}</p>
           </.editable>
@@ -99,6 +100,7 @@ defmodule SiteWeb.QuartoLive do
             raw={@raw_block}
             rows={3}
             hint="texto que passa rolando no topo"
+            align="center"
           >
             <div class="marquee">
               <span class="marquee-inner font-bubblegum text-xl">{@marquee}</span>
@@ -115,7 +117,9 @@ defmodule SiteWeb.QuartoLive do
             </div>
 
             <section class="card-y2k">
-              <h2 class="font-bubblegum text-pink text-2xl mb-3 border-b-2 border-bubblegum border-dashed pb-2">stats</h2>
+              <h2 class="font-bubblegum text-pink text-2xl mb-3 border-b-2 border-bubblegum border-dashed pb-2">
+                stats
+              </h2>
               <.editable
                 id="quarto-stats"
                 key="stats"
@@ -124,6 +128,8 @@ defmodule SiteWeb.QuartoLive do
                 raw={@raw_block}
                 rows={8}
                 hint="uma linha por par. formato: chave | valor"
+                template="chave | valor"
+                add_label="+ nova stat"
               >
                 <dl class="grid grid-stats gap-1 text-base">
                   <%= for {k, v} <- Site.Rooms.pairs(@stats) do %>
@@ -144,6 +150,7 @@ defmodule SiteWeb.QuartoLive do
                 raw={@raw_block}
                 rows={2}
                 hint="emoticon do dia"
+                align="center"
               >
                 <span class="block text-4xl leading-none font-pixel">{@humor}</span>
               </.editable>
@@ -158,7 +165,9 @@ defmodule SiteWeb.QuartoLive do
 
           <section class="flex flex-col gap-4">
             <article class="card-y2k">
-              <h2 class="font-bubblegum text-pink text-2xl mb-3 border-b-2 border-bubblegum border-dashed pb-2">sobre mim</h2>
+              <h2 class="font-bubblegum text-pink text-2xl mb-3 border-b-2 border-bubblegum border-dashed pb-2">
+                sobre mim
+              </h2>
               <.editable
                 id="quarto-bio"
                 key="bio"
@@ -167,6 +176,8 @@ defmodule SiteWeb.QuartoLive do
                 raw={@raw_block}
                 rows={8}
                 hint="parágrafos separados por linha em branco"
+                template="novo parágrafo"
+                add_label="+ novo parágrafo"
               >
                 <div class="leading-relaxed text-base flex flex-col gap-3">
                   <p :for={para <- Site.Rooms.paragraphs(@bio)}>{para}</p>
@@ -178,7 +189,9 @@ defmodule SiteWeb.QuartoLive do
             </article>
 
             <article class="card-y2k">
-              <h2 class="font-bubblegum text-pink text-2xl mb-3 border-b-2 border-bubblegum border-dashed pb-2">top 5</h2>
+              <h2 class="font-bubblegum text-pink text-2xl mb-3 border-b-2 border-bubblegum border-dashed pb-2">
+                top 5
+              </h2>
               <.editable
                 id="quarto-top5"
                 key="top5"
@@ -187,9 +200,14 @@ defmodule SiteWeb.QuartoLive do
                 raw={@raw_block}
                 rows={6}
                 hint="um item por linha"
+                template="novo favorito"
+                add_label="+ novo favorito"
               >
                 <ul class="flex flex-col gap-2">
-                  <li :for={item <- Site.Rooms.lines(@top5)} class="px-3 py-2 border-l-4 border-musgo bg-menta">
+                  <li
+                    :for={item <- Site.Rooms.lines(@top5)}
+                    class="px-3 py-2 border-l-4 border-musgo bg-menta"
+                  >
                     {item}
                   </li>
                 </ul>

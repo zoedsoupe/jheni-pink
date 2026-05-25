@@ -45,8 +45,11 @@ defmodule SiteWeb.Auth do
 
   def verify_login_token(endpoint, token) do
     case Token.verify(endpoint, @salt_login, token, max_age: login_max_age()) do
-      {:ok, %{email: email}} -> if whitelisted?(email), do: {:ok, email}, else: {:error, :forbidden}
-      other -> other
+      {:ok, %{email: email}} ->
+        if whitelisted?(email), do: {:ok, email}, else: {:error, :forbidden}
+
+      other ->
+        other
     end
   end
 
@@ -56,8 +59,11 @@ defmodule SiteWeb.Auth do
 
   def verify_session_token(endpoint, token) do
     case Token.verify(endpoint, @salt_session, token, max_age: session_max_age()) do
-      {:ok, %{email: email}} -> if whitelisted?(email), do: {:ok, email}, else: {:error, :forbidden}
-      other -> other
+      {:ok, %{email: email}} ->
+        if whitelisted?(email), do: {:ok, email}, else: {:error, :forbidden}
+
+      other ->
+        other
     end
   end
 
@@ -65,7 +71,7 @@ defmodule SiteWeb.Auth do
     new()
     |> to({"jhene", email})
     |> from(from_email())
-    |> subject("[ jeni.pink ] seu link pra entrar no modo edição")
+    |> subject("[ jhene ] seu link pra entrar no modo edição")
     |> text_body("""
     oi jhene!
 
@@ -73,7 +79,7 @@ defmodule SiteWeb.Auth do
 
     #{login_url}
 
-    com esse login você consegue editar as rooms, postar no diário, e ler
+    com esse login você consegue editar as salas, postar no diário, e ler
     as cartas. se não foi você, ignora.
 
     beijos,

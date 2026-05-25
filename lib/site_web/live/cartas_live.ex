@@ -53,11 +53,17 @@ defmodule SiteWeb.CartasLive do
           <% end %>
         </header>
 
-        <div :if={Phoenix.Flash.get(@flash, :info)} class="bg-menta border-3 border-vinho p-4 mb-4 shadow-cute">
+        <div
+          :if={Phoenix.Flash.get(@flash, :info)}
+          class="bg-menta border-3 border-vinho p-4 mb-4 shadow-cute"
+        >
           <p class="font-bubblegum text-vinho text-lg">{Phoenix.Flash.get(@flash, :info)}</p>
         </div>
 
-        <div :if={Phoenix.Flash.get(@flash, :error)} class="bg-bubblegum border-3 border-sunset-rose p-4 mb-4 shadow-cute">
+        <div
+          :if={Phoenix.Flash.get(@flash, :error)}
+          class="bg-bubblegum border-3 border-sunset-rose p-4 mb-4 shadow-cute"
+        >
           <p class="font-bubblegum text-sunset-rose text-lg">{Phoenix.Flash.get(@flash, :error)}</p>
         </div>
 
@@ -94,7 +100,11 @@ defmodule SiteWeb.CartasLive do
             <%= if @jhene_authorized do %>
               <%= if @open_slug == p.slug do %>
                 <pre class="font-comic text-vinho text-base leading-relaxed whitespace-pre-wrap">{p.texto}</pre>
-                <button phx-click="toggle" phx-value-slug={p.slug} class="font-pixel text-sunset-rose mt-3">
+                <button
+                  phx-click="toggle"
+                  phx-value-slug={p.slug}
+                  class="font-pixel text-sunset-rose mt-3"
+                >
                   &lt;&lt; fechar
                 </button>
               <% else %>
@@ -104,7 +114,9 @@ defmodule SiteWeb.CartasLive do
                 </button>
               <% end %>
             <% else %>
-              <p class="font-comic text-vinho-soft text-base leading-relaxed locked-blur">{p.preview}</p>
+              <p class="font-comic text-vinho-soft text-base leading-relaxed locked-blur">
+                {p.preview}
+              </p>
               <p class="font-pixel text-sunset-rose mt-3">
                 [ trancado --
                 <.link navigate={~p"/cartas/entrar"} class="font-pixel text-pink underline">
@@ -126,7 +138,11 @@ defmodule SiteWeb.CartasLive do
             <%= if @jhene_authorized do %>
               <%= if @open_slug == m.slug do %>
                 <pre class="font-comic text-vinho text-base leading-relaxed whitespace-pre-wrap">{m.texto}</pre>
-                <button phx-click="toggle" phx-value-slug={m.slug} class="font-pixel text-sunset-rose mt-3">
+                <button
+                  phx-click="toggle"
+                  phx-value-slug={m.slug}
+                  class="font-pixel text-sunset-rose mt-3"
+                >
                   &lt;&lt; fechar
                 </button>
               <% else %>
@@ -136,7 +152,9 @@ defmodule SiteWeb.CartasLive do
                 </button>
               <% end %>
             <% else %>
-              <p class="font-comic text-vinho-soft text-base leading-relaxed locked-blur">{m.preview}</p>
+              <p class="font-comic text-vinho-soft text-base leading-relaxed locked-blur">
+                {m.preview}
+              </p>
               <p class="font-pixel text-sunset-rose mt-3">
                 [ trancado --
                 <.link navigate={~p"/cartas/entrar"} class="font-pixel text-pink underline">

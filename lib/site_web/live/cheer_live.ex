@@ -70,8 +70,15 @@ defmodule SiteWeb.CheerLive do
         <header class="card-y2k text-center mb-6 shadow-deep">
           <div class="flex justify-center gap-4 mb-2">
             <span class="gif-bounce text-5xl font-pixel text-pink">\\o/</span>
-            <span class="gif-bounce text-5xl font-pixel text-sunset-orange" style="animation-delay: 0.3s">\\o/</span>
-            <span class="gif-bounce text-5xl font-pixel text-mostarda" style="animation-delay: 0.6s">\\o/</span>
+            <span
+              class="gif-bounce text-5xl font-pixel text-sunset-orange"
+              style="animation-delay: 0.3s"
+            >
+              \\o/
+            </span>
+            <span class="gif-bounce text-5xl font-pixel text-mostarda" style="animation-delay: 0.6s">
+              \\o/
+            </span>
           </div>
           <h1 class="wordart text-4xl sm:text-5xl mb-2">cheer cheer cheer</h1>
           <p class="font-pixel text-vinho-soft text-lg">~*~ go go go ~*~</p>
@@ -85,6 +92,7 @@ defmodule SiteWeb.CheerLive do
             editing_key={@editing_key}
             raw={@raw_block}
             rows={3}
+            align="center"
           >
             <div class="marquee">
               <span class="marquee-inner font-bubblegum text-xl">{@marquee}</span>
@@ -93,7 +101,9 @@ defmodule SiteWeb.CheerLive do
         </div>
 
         <section class="card-y2k mb-6">
-          <h2 class="font-bubblegum text-pink text-3xl mb-4 border-b-2 border-bubblegum border-dashed pb-2">stats da atleta</h2>
+          <h2 class="font-bubblegum text-pink text-3xl mb-4 border-b-2 border-bubblegum border-dashed pb-2">
+            stats da atleta
+          </h2>
           <.editable
             id="cheer-stats"
             key="stats"
@@ -102,6 +112,8 @@ defmodule SiteWeb.CheerLive do
             raw={@raw_block}
             rows={6}
             hint="uma linha por par. formato: chave | valor"
+            template="chave | valor"
+            add_label="+ nova stat"
           >
             <dl class="grid grid-stats gap-2 text-base">
               <%= for {k, v} <- Site.Rooms.pairs(@stats) do %>
@@ -113,7 +125,9 @@ defmodule SiteWeb.CheerLive do
         </section>
 
         <section class="card-y2k mb-6">
-          <h2 class="font-bubblegum text-pink text-3xl mb-4 border-b-2 border-bubblegum border-dashed pb-2">campeonatos</h2>
+          <h2 class="font-bubblegum text-pink text-3xl mb-4 border-b-2 border-bubblegum border-dashed pb-2">
+            campeonatos
+          </h2>
           <.editable
             id="cheer-campeonatos"
             key="campeonatos"
@@ -122,9 +136,14 @@ defmodule SiteWeb.CheerLive do
             raw={@raw_block}
             rows={14}
             hint="cada campeonato: linhas 'evento:', 'data:', 'local:', 'categoria:', 'hora:' separadas por linha em branco"
+            template="evento: \ndata: \nlocal: \ncategoria: \nhora: "
+            add_label="+ novo campeonato"
           >
             <ul class="flex flex-col gap-3">
-              <li :for={c <- Site.Rooms.records(@campeonatos)} class="px-4 py-3 border-l-4 border-sunset-rose bg-bubblegum">
+              <li
+                :for={c <- Site.Rooms.records(@campeonatos)}
+                class="px-4 py-3 border-l-4 border-sunset-rose bg-bubblegum"
+              >
                 <div class="font-bubblegum text-vinho text-xl">{c["evento"]} -- {c["categoria"]}</div>
                 <div class="font-pixel text-vinho-soft text-base">{c["data"]} -- {c["local"]}</div>
                 <div class="font-pixel text-sunset-rose text-base">competiu às {c["hora"]}</div>

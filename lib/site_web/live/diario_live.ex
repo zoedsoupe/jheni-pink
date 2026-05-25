@@ -65,9 +65,14 @@ defmodule SiteWeb.DiarioLive do
     post = Posts.get(id)
 
     case Posts.update_post(post, params, socket.assigns.jhene_authorized) do
-      {:ok, _} -> {:noreply, assign(socket, editing_id: nil)}
-      {:error, :unauthorized} -> {:noreply, put_flash(socket, :error, "só a jhene edita")}
-      {:error, %Ecto.Changeset{} = cs} -> {:noreply, assign(socket, edit_form: to_form(cs, as: "post"))}
+      {:ok, _} ->
+        {:noreply, assign(socket, editing_id: nil)}
+
+      {:error, :unauthorized} ->
+        {:noreply, put_flash(socket, :error, "só a jhene edita")}
+
+      {:error, %Ecto.Changeset{} = cs} ->
+        {:noreply, assign(socket, edit_form: to_form(cs, as: "post"))}
     end
   end
 
@@ -155,17 +160,28 @@ defmodule SiteWeb.DiarioLive do
               placeholder="conta pra todo mundo..."
               class="w-full p-3 border-3 border-vinho bg-cream font-comic text-base"
             >{Phoenix.HTML.Form.normalize_value("textarea", @form[:content].value)}</textarea>
-            <p :for={msg <- errors(@form[:content])} class="font-pixel text-sunset-rose text-base">{msg}</p>
+            <p :for={msg <- errors(@form[:content])} class="font-pixel text-sunset-rose text-base">
+              {msg}
+            </p>
 
             <div class="flex flex-wrap gap-2">
               <label
                 :for={s <- @stickers}
                 class={[
                   "px-3 py-2 border-3 border-vinho cursor-pointer font-pixel text-lg hover-lift",
-                  if(@form[:sticker].value == s, do: "bg-vinho text-mostarda", else: "bg-cream text-vinho")
+                  if(@form[:sticker].value == s,
+                    do: "bg-vinho text-mostarda",
+                    else: "bg-cream text-vinho"
+                  )
                 ]}
               >
-                <input type="radio" name={@form[:sticker].name} value={s} checked={@form[:sticker].value == s} class="hidden" />
+                <input
+                  type="radio"
+                  name={@form[:sticker].name}
+                  value={s}
+                  checked={@form[:sticker].value == s}
+                  class="hidden"
+                />
                 {s}
               </label>
             </div>
@@ -201,19 +217,35 @@ defmodule SiteWeb.DiarioLive do
                       :for={s <- @stickers}
                       class={[
                         "px-2 py-1 border-2 border-vinho cursor-pointer font-pixel text-base",
-                        if(@edit_form[:sticker].value == s, do: "bg-vinho text-mostarda", else: "bg-cream text-vinho")
+                        if(@edit_form[:sticker].value == s,
+                          do: "bg-vinho text-mostarda",
+                          else: "bg-cream text-vinho"
+                        )
                       ]}
                     >
-                      <input type="radio" name={@edit_form[:sticker].name} value={s} checked={@edit_form[:sticker].value == s} class="hidden" />
+                      <input
+                        type="radio"
+                        name={@edit_form[:sticker].name}
+                        value={s}
+                        checked={@edit_form[:sticker].value == s}
+                        class="hidden"
+                      />
                       {s}
                     </label>
                   </div>
 
                   <div class="flex gap-2">
-                    <button type="submit" class="bg-musgo text-cream border-3 border-vinho px-3 py-1 font-pixel text-lg">
+                    <button
+                      type="submit"
+                      class="bg-musgo text-cream border-3 border-vinho px-3 py-1 font-pixel text-lg"
+                    >
                       salvar
                     </button>
-                    <button type="button" phx-click="cancel_edit" class="bg-cream text-vinho border-3 border-vinho px-3 py-1 font-pixel text-lg">
+                    <button
+                      type="button"
+                      phx-click="cancel_edit"
+                      class="bg-cream text-vinho border-3 border-vinho px-3 py-1 font-pixel text-lg"
+                    >
                       cancelar
                     </button>
                   </div>
@@ -226,7 +258,11 @@ defmodule SiteWeb.DiarioLive do
                 <div class="flex items-center justify-between mt-2 border-t border-dashed border-bubblegum pt-2">
                   <p class="font-pixel text-vinho-soft text-base">-- {format_date(p.inserted_at)}</p>
                   <div :if={@jhene_authorized} class="flex gap-2">
-                    <button phx-click="edit" phx-value-id={p.id} class="font-pixel text-pink text-base underline">
+                    <button
+                      phx-click="edit"
+                      phx-value-id={p.id}
+                      class="font-pixel text-pink text-base underline"
+                    >
                       editar
                     </button>
                     <button

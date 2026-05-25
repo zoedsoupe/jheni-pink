@@ -129,6 +129,7 @@ defmodule SiteWeb.LesbicaLive do
             editing_key={@editing_key}
             raw={@raw_block}
             rows={3}
+            align="center"
           >
             <div class="marquee">
               <span class="marquee-inner font-bubblegum text-xl">{@marquee}</span>
@@ -147,7 +148,9 @@ defmodule SiteWeb.LesbicaLive do
             editing_key={@editing_key}
             raw={@raw_block}
             rows={10}
-            hint="o manifesto"
+            hint="o manifesto -- parágrafos separados por linha em branco"
+            template="novo parágrafo do manifesto"
+            add_label="+ novo parágrafo"
           >
             <div class="font-comic text-vinho text-base leading-relaxed flex flex-col gap-3">
               <p :for={para <- Site.Rooms.paragraphs(@manifesto)}>{para}</p>
@@ -167,9 +170,14 @@ defmodule SiteWeb.LesbicaLive do
             raw={@raw_block}
             rows={20}
             hint="cada ancestral: 'nome:', 'tag:', 'por_que:' em três linhas, separadas das próximas por linha em branco"
+            template="nome: \ntag: \npor_que: "
+            add_label="+ nova ancestral"
           >
             <ul class="flex flex-col gap-4">
-              <li :for={a <- Site.Rooms.records(@ancestrais)} class="border-l-4 border-sunset-orange pl-4 py-1">
+              <li
+                :for={a <- Site.Rooms.records(@ancestrais)}
+                class="border-l-4 border-sunset-orange pl-4 py-1"
+              >
                 <div class="font-bubblegum text-pink text-xl">{a["nome"]}</div>
                 <div class="font-pixel text-vinho-soft text-base">[ {a["tag"]} ]</div>
                 <div class="font-comic text-vinho text-base mt-1">{a["por_que"]}</div>
@@ -191,6 +199,8 @@ defmodule SiteWeb.LesbicaLive do
               raw={@raw_block}
               rows={6}
               hint="um livro por linha"
+              template="novo livro -- autora"
+              add_label="+ livro"
             >
               <ul class="font-comic text-vinho text-base flex flex-col gap-2">
                 <li :for={item <- Site.Rooms.lines(@livros)}>- {item}</li>
@@ -210,6 +220,8 @@ defmodule SiteWeb.LesbicaLive do
               raw={@raw_block}
               rows={6}
               hint="um filme por linha"
+              template="novo filme (ano)"
+              add_label="+ filme"
             >
               <ul class="font-comic text-vinho text-base flex flex-col gap-2">
                 <li :for={item <- Site.Rooms.lines(@filmes)}>- {item}</li>
@@ -229,6 +241,8 @@ defmodule SiteWeb.LesbicaLive do
               raw={@raw_block}
               rows={6}
               hint="uma música/artista por linha"
+              template="nova artista -- album"
+              add_label="+ música"
             >
               <ul class="font-comic text-vinho text-base flex flex-col gap-2">
                 <li :for={item <- Site.Rooms.lines(@musicas)}>- {item}</li>

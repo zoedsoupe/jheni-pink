@@ -22,6 +22,14 @@ defmodule SiteWeb.RoomEditor do
   attr :rows, :integer, default: 6
   attr :class, :string, default: ""
   attr :button_class, :string, default: ""
+  # Optional stub appended when "+ adicionar" is clicked. Used for
+  # list-shaped blocks (records, lines, pairs, paragraphs) so jhene
+  # gets a starter template instead of a blank textarea.
+  attr :template, :string, default: nil
+  attr :add_label, :string, default: "+ adicionar"
+  # Alignment of the [ editar ] / [ + add ] button row. Use "center" for
+  # marquees and centered headers, "start" (default) for cards.
+  attr :align, :string, default: "start", values: ~w(start center end)
   slot :inner_block, required: true
 
   def editable(assigns) do
@@ -63,18 +71,32 @@ defmodule SiteWeb.RoomEditor do
         </form>
       <% else %>
         {render_slot(@inner_block)}
-        <button
-          :if={@authed}
-          phx-click="edit_block"
-          phx-value-key={@key}
-          class={"font-pixel text-pink text-base underline mt-1 " <> @button_class}
-        >
-          [ editar ]
-        </button>
+        <div :if={@authed} class={"mt-2 flex flex-wrap gap-2 " <> align_class(@align)}>
+          <button
+            phx-click="edit_block"
+            phx-value-key={@key}
+            class={"font-pixel text-vinho bg-cream border-2 border-vinho px-2 py-0.5 text-sm shadow-cute hover-lift " <> @button_class}
+          >
+            [ editar ]
+          </button>
+          <button
+            :if={@template}
+            phx-click="add_template"
+            phx-value-key={@key}
+            phx-value-template={@template}
+            class="font-pixel text-cream bg-musgo border-2 border-vinho px-2 py-0.5 text-sm shadow-cute hover-lift"
+          >
+            [ {@add_label} ]
+          </button>
+        </div>
       <% end %>
     </div>
     """
   end
+
+  defp align_class("center"), do: "justify-center"
+  defp align_class("end"), do: "justify-end"
+  defp align_class(_), do: "justify-start"
 
   defmacro __using__(opts) do
     room = Keyword.fetch!(opts, :room)
@@ -86,6 +108,13 @@ defmodule SiteWeb.RoomEditor do
 
       def handle_event("edit_block", %{"key" => key}, socket) do
         raw = Rooms.value(@room, key, default_for(key))
+        {:noreply, assign(socket, editing_key: key, raw_block: raw)}
+      end
+
+      def handle_event("add_template", %{"key" => key, "template" => template}, socket) do
+        current = Rooms.value(@room, key, default_for(key))
+        separator = if String.trim(current) == "", do: "", else: "\n\n"
+        raw = current <> separator <> template
         {:noreply, assign(socket, editing_key: key, raw_block: raw)}
       end
 

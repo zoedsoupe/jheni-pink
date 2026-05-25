@@ -1,0 +1,55 @@
+# fly.io config for jheni.pink (Phoenix + sqlite, single machine).
+# Update PHX_HOST + app name after `flyctl apps create`.
+
+app = "jheni-pink"
+primary_region = "gig"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[deploy]
+  # release-time DB migrations happen automatically via Site.Application
+  # (Ecto.Migrator runs at boot when RELEASE_NAME is set), so no release_command.
+  strategy = "immediate"
+
+[env]
+  PHX_HOST = "jhene.zeetech.io"
+  PORT = "4000"
+  PHX_SERVER = "true"
+  DATABASE_PATH = "/data/site.db"
+  POOL_SIZE = "5"
+
+[[mounts]]
+  source = "site_data"
+  destination = "/data"
+  # keep small initially; grow with `flyctl volumes extend`
+  initial_size = "1"
+
+[http_service]
+  internal_port = 4000
+  force_https = true
+  # sqlite => single machine. Don't auto-scale horizontally.
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [http_service.concurrency]
+    type = "connections"
+    hard_limit = 200
+    soft_limit = 150
+
+# minimum viable machine -- bump if you see OOM
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "512mb"
+  cpus = 1
+
+[checks]
+  [checks.http]
+    type = "http"
+    port = 4000
+    interval = "30s"
+    timeout = "5s"
+    grace_period = "10s"
+    method = "get"
+    path = "/"

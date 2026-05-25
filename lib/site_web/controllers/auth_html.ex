@@ -42,7 +42,7 @@ defmodule SiteWeb.AuthHTML do
                 id="email"
                 required
                 autofocus
-                placeholder="jhenifermendesj@gmail.com"
+                placeholder="seu email aqui"
                 class="w-full p-3 border-3 border-vinho bg-cream font-comic text-base"
               />
               <button type="submit" class="btn-y2k btn-pulse mt-2">

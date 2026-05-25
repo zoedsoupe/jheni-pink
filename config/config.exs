@@ -37,7 +37,7 @@ config :swoosh, :api_client, Swoosh.ApiClient.Req
 # /cartas magic-link auth -- whitelisted email + token signing.
 config :site, SiteWeb.Auth,
   jhene_email: "jhenifermendesj@gmail.com",
-  from_email: {"jeni site", "no-reply@jeni.pink"},
+  from_email: {"jhene site", "jhene@no-reply.zeetech.io"},
   login_max_age: 900,
   session_max_age: 60 * 60 * 24 * 30
 

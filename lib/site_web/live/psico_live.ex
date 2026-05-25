@@ -34,6 +34,8 @@ defmodule SiteWeb.PsicoLive do
     |> assign(
       marquee: Site.Rooms.value(@room, "marquee", default_for("marquee")),
       coloquio_title: Site.Rooms.value(@room, "coloquio_title", default_for("coloquio_title")),
+      coloquio_subtitle:
+        Site.Rooms.value(@room, "coloquio_subtitle", default_for("coloquio_subtitle")),
       coloquio_date: Site.Rooms.value(@room, "coloquio_date", default_for("coloquio_date")),
       coloquio: Site.Rooms.value(@room, "coloquio", default_for("coloquio")),
       agora_lendo: Site.Rooms.value(@room, "agora_lendo", default_for("agora_lendo"))
@@ -84,15 +86,20 @@ defmodule SiteWeb.PsicoLive do
     |> String.trim()
   end
 
-  defp default_for("coloquio_title"), do: "II Colóquio de Fenomenologia Clínica"
-  defp default_for("coloquio_date"), do: "21-22 de maio de 2026 -- UFF Campos"
+  defp default_for("coloquio_title"),
+    do: "II Colóquio de Fenomenologia, Clínica e Contemporaneidade"
+
+  defp default_for("coloquio_subtitle"),
+    do: "sofrimento e angústia na psicoterapia"
+
+  defp default_for("coloquio_date"),
+    do: "21 de maio de 2026 -- 10h às 13h -- UFF Campos"
 
   defp default_for("coloquio") do
     """
-    dois dias de palestra, mesa redonda e gente brilhante falando de
-    corpo, clínica e mundo-vivido. saí de lá com a cabeça cheia e o
-    caderno mais cheio ainda. Husserl seria a primeira pessoa na
-    festa.
+    organizei como monitora do Crisóstomo, junto com a galera da
+    monitoria de fenomenologia. uma manhã inteira de palestra, mesa
+    redonda e gente brilhante falando de corpo, clínica e mundo-vivido.
     """
     |> String.trim()
   end
@@ -128,6 +135,7 @@ defmodule SiteWeb.PsicoLive do
             editing_key={@editing_key}
             raw={@raw_block}
             rows={3}
+            align="center"
           >
             <div class="marquee">
               <span class="marquee-inner font-bubblegum text-xl">{@marquee}</span>
@@ -147,9 +155,14 @@ defmodule SiteWeb.PsicoLive do
             raw={@raw_block}
             rows={10}
             hint="cada autora: 'nome:' e 'obra:' em duas linhas, separadas das próximas por uma linha em branco"
+            template="nome: \nobra: "
+            add_label="+ nova autora"
           >
             <ul class="flex flex-col gap-3">
-              <li :for={a <- Site.Rooms.records(Map.fetch!(assigns, String.to_atom(p.key)))} class="border-l-4 border-pink pl-3 py-1">
+              <li
+                :for={a <- Site.Rooms.records(Map.fetch!(assigns, String.to_atom(p.key)))}
+                class="border-l-4 border-pink pl-3 py-1"
+              >
                 <div class="font-bubblegum text-pink text-xl">{a["nome"]}</div>
                 <div class="font-pixel text-vinho-soft text-base">{a["obra"]}</div>
               </li>
@@ -157,7 +170,8 @@ defmodule SiteWeb.PsicoLive do
           </.editable>
         </section>
 
-        <section class="bg-sunset-gradient border-4 border-vinho shadow-cute p-6 mb-6">
+        <section class="card-y2k bg-bubblegum mb-6">
+          <p class="font-pixel text-pink text-base mb-2">[ registro #001 ]</p>
           <.editable
             id="psico-coloquio-title"
             key="coloquio_title"
@@ -167,7 +181,22 @@ defmodule SiteWeb.PsicoLive do
             rows={2}
             hint="título do colóquio"
           >
-            <h2 class="font-bubblegum text-cream text-3xl mb-2">{@coloquio_title}</h2>
+            <h2 class="font-bubblegum text-vinho text-2xl sm:text-3xl leading-tight">
+              {@coloquio_title}
+            </h2>
+          </.editable>
+          <.editable
+            id="psico-coloquio-subtitle"
+            key="coloquio_subtitle"
+            authed={@jhene_authorized}
+            editing_key={@editing_key}
+            raw={@raw_block}
+            rows={2}
+            hint="subtítulo / tema do colóquio"
+          >
+            <p class="font-comic text-vinho-soft text-lg italic mb-3">
+              {@coloquio_subtitle}
+            </p>
           </.editable>
           <.editable
             id="psico-coloquio-date"
@@ -176,9 +205,11 @@ defmodule SiteWeb.PsicoLive do
             editing_key={@editing_key}
             raw={@raw_block}
             rows={2}
-            hint="datas e local"
+            hint="data, horário e local"
           >
-            <p class="font-pixel text-cream text-lg mb-2">{@coloquio_date}</p>
+            <p class="font-pixel text-vinho text-base mb-3 px-2 py-1 inline-block border-2 border-vinho bg-cream">
+              {@coloquio_date}
+            </p>
           </.editable>
           <.editable
             id="psico-coloquio"
@@ -189,9 +220,8 @@ defmodule SiteWeb.PsicoLive do
             rows={6}
             hint="texto do registro"
           >
-            <p class="font-comic text-cream text-base leading-relaxed">{@coloquio}</p>
+            <p class="font-comic text-vinho text-base leading-relaxed">{@coloquio}</p>
           </.editable>
-          <p class="font-pixel text-mostarda text-base mt-3">[ registro #001 ]</p>
         </section>
 
         <section class="card-y2k">

@@ -1,0 +1,34 @@
+# build artifacts
+_build/
+deps/
+*.beam
+
+# local sqlite databases -- never bake into image
+*.db
+*.db-shm
+*.db-wal
+
+# node / assets cache (we don't use node, but cover the bases)
+assets/node_modules/
+
+# editor / OS
+.DS_Store
+.elixir_ls/
+.vscode/
+.idea/
+
+# git + claude meta
+.git/
+.gitignore
+.github/
+.claude/
+.expert/
+AGENTS.md
+README.md
+
+# tests + fixtures (not needed in prod image)
+test/
+
+# fly cache
+.fly/
+fly.toml

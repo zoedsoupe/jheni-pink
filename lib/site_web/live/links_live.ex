@@ -80,6 +80,7 @@ defmodule SiteWeb.LinksLive do
             editing_key={@editing_key}
             raw={@raw_block}
             rows={3}
+            align="center"
           >
             <div class="marquee">
               <span class="marquee-inner font-bubblegum text-xl">{@marquee}</span>
@@ -99,14 +100,21 @@ defmodule SiteWeb.LinksLive do
             raw={@raw_block}
             rows={16}
             hint="cada música: 'artista:', 'album:', 'vibe:', 'url:' separadas das próximas por linha em branco"
+            template="artista: \nalbum: \nvibe: \nurl: "
+            add_label="+ nova música"
           >
             <ul class="flex flex-col gap-4">
-              <li :for={m <- Site.Rooms.records(@musicas)} class="border-3 border-vinho bg-bubblegum p-4 shadow-cute hover-lift">
+              <li
+                :for={m <- Site.Rooms.records(@musicas)}
+                class="border-3 border-vinho bg-bubblegum p-4 shadow-cute hover-lift"
+              >
                 <a href={m["url"]} target="_blank" rel="noopener" class="no-underline">
                   <div class="font-bubblegum text-pink text-2xl">{m["artista"]}</div>
                   <div class="font-pixel text-vinho text-base">[ {m["album"]} ]</div>
                   <div class="font-comic text-vinho-soft text-base mt-1">{m["vibe"]}</div>
-                  <div class="font-pixel text-sunset-rose text-base mt-2">--&gt; abrir no spotify</div>
+                  <div class="font-pixel text-sunset-rose text-base mt-2">
+                    --&gt; abrir no spotify
+                  </div>
                 </a>
               </li>
             </ul>
@@ -125,9 +133,14 @@ defmodule SiteWeb.LinksLive do
             raw={@raw_block}
             rows={14}
             hint="cada site: 'nome:', 'url:', 'desc:' separadas das próximas por linha em branco"
+            template="nome: \nurl: \ndesc: "
+            add_label="+ novo site"
           >
             <ul class="flex flex-col gap-3">
-              <li :for={s <- Site.Rooms.records(@sites)} class="border-l-4 border-musgo bg-menta px-4 py-3">
+              <li
+                :for={s <- Site.Rooms.records(@sites)}
+                class="border-l-4 border-musgo bg-menta px-4 py-3"
+              >
                 <a href={s["url"]} target="_blank" rel="noopener" class="no-underline">
                   <div class="font-bubblegum text-vinho text-xl">{s["nome"]}</div>
                   <div class="font-pixel text-vinho-soft text-base">{s["desc"]}</div>

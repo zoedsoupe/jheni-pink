@@ -143,7 +143,9 @@ defmodule SiteWeb.LivroLive do
                 maxlength="40"
                 class="w-full p-3 border-3 border-vinho bg-cream font-comic text-base"
               />
-              <p :for={msg <- errors(@form[:nome])} class="font-pixel text-sunset-rose text-base mt-1">{msg}</p>
+              <p :for={msg <- errors(@form[:nome])} class="font-pixel text-sunset-rose text-base mt-1">
+                {msg}
+              </p>
             </div>
 
             <div>
@@ -155,7 +157,12 @@ defmodule SiteWeb.LivroLive do
                 placeholder="oi jhene! seu site é..."
                 class="w-full p-3 border-3 border-vinho bg-cream font-comic text-base"
               >{Phoenix.HTML.Form.normalize_value("textarea", @form[:mensagem].value)}</textarea>
-              <p :for={msg <- errors(@form[:mensagem])} class="font-pixel text-sunset-rose text-base mt-1">{msg}</p>
+              <p
+                :for={msg <- errors(@form[:mensagem])}
+                class="font-pixel text-sunset-rose text-base mt-1"
+              >
+                {msg}
+              </p>
             </div>
 
             <div>
@@ -165,7 +172,10 @@ defmodule SiteWeb.LivroLive do
                   :for={s <- @stickers}
                   class={[
                     "px-3 py-2 border-3 border-vinho cursor-pointer font-pixel text-lg hover-lift",
-                    if(@form[:sticker].value == s, do: "bg-vinho text-mostarda", else: "bg-cream text-vinho")
+                    if(@form[:sticker].value == s,
+                      do: "bg-vinho text-mostarda",
+                      else: "bg-cream text-vinho"
+                    )
                   ]}
                 >
                   <input
@@ -178,7 +188,12 @@ defmodule SiteWeb.LivroLive do
                   {s}
                 </label>
               </div>
-              <p :for={msg <- errors(@form[:sticker])} class="font-pixel text-sunset-rose text-base mt-1">{msg}</p>
+              <p
+                :for={msg <- errors(@form[:sticker])}
+                class="font-pixel text-sunset-rose text-base mt-1"
+              >
+                {msg}
+              </p>
             </div>
 
             <div class="bg-mostarda border-3 border-dashed border-vinho p-3">

@@ -84,7 +84,9 @@ defmodule SiteWeb.MenuLive do
     <main class="bg-diner min-h-screen px-4 py-6 pb-20">
       <div class="max-w-3xl mx-auto">
         <header class="card-y2k text-center mb-6 shadow-deep border-5 border-vinho">
-          <p class="font-pixel text-sunset-rose text-base tracking-wider uppercase">~ desde 03 de janeiro ~</p>
+          <p class="font-pixel text-sunset-rose text-base tracking-wider uppercase">
+            ~ desde 03 de janeiro ~
+          </p>
           <h1 class="wordart text-4xl sm:text-6xl mb-2">jhene's diner</h1>
           <p class="font-pixel text-vinho-soft text-lg">menu da casa</p>
           <p class="font-pixel text-vinho text-base mt-2">[ ( O ) ]  [ ( O ) ]  [ ( O ) ]</p>
@@ -98,6 +100,7 @@ defmodule SiteWeb.MenuLive do
             editing_key={@editing_key}
             raw={@raw_block}
             rows={3}
+            align="center"
           >
             <div class="marquee">
               <span class="marquee-inner font-bubblegum text-xl">{@marquee}</span>
@@ -116,9 +119,14 @@ defmodule SiteWeb.MenuLive do
               raw={@raw_block}
               rows={6}
               hint="um doce por linha"
+              template="novo doce"
+              add_label="+ novo doce"
             >
               <ul class="flex flex-col gap-2 text-base">
-                <li :for={item <- Site.Rooms.lines(@doces)} class="flex justify-between border-b border-dashed border-bubblegum pb-2 last:border-b-0">
+                <li
+                  :for={item <- Site.Rooms.lines(@doces)}
+                  class="flex justify-between border-b border-dashed border-bubblegum pb-2 last:border-b-0"
+                >
                   <span class="font-bubblegum">{item}</span>
                   <span class="font-pixel text-sunset-rose">R$ &lt;3</span>
                 </li>
@@ -138,9 +146,14 @@ defmodule SiteWeb.MenuLive do
               raw={@raw_block}
               rows={5}
               hint="uma bebida por linha"
+              template="nova bebida"
+              add_label="+ nova bebida"
             >
               <ul class="flex flex-col gap-2 text-base">
-                <li :for={item <- Site.Rooms.lines(@bebidas)} class="flex justify-between border-b border-dashed border-mostarda pb-2 last:border-b-0">
+                <li
+                  :for={item <- Site.Rooms.lines(@bebidas)}
+                  class="flex justify-between border-b border-dashed border-mostarda pb-2 last:border-b-0"
+                >
                   <span class="font-bubblegum">{item}</span>
                   <span class="font-pixel text-sunset-rose">~~~</span>
                 </li>
@@ -151,7 +164,9 @@ defmodule SiteWeb.MenuLive do
 
         <section class="card-y2k mb-6">
           <div class="border-3 border-dashed border-musgo p-4">
-            <h2 class="font-bubblegum text-musgo text-3xl mb-3 text-center">~* pratos da chef zoey *~</h2>
+            <h2 class="font-bubblegum text-musgo text-3xl mb-3 text-center">
+              ~* pratos da chef zoey *~
+            </h2>
             <.editable
               id="menu-pratos"
               key="pratos"
@@ -160,9 +175,14 @@ defmodule SiteWeb.MenuLive do
               raw={@raw_block}
               rows={5}
               hint="um prato por linha"
+              template="novo prato"
+              add_label="+ novo prato"
             >
               <ul class="flex flex-col gap-2 text-base">
-                <li :for={item <- Site.Rooms.lines(@pratos)} class="flex justify-between border-b border-dashed border-menta pb-2 last:border-b-0">
+                <li
+                  :for={item <- Site.Rooms.lines(@pratos)}
+                  class="flex justify-between border-b border-dashed border-menta pb-2 last:border-b-0"
+                >
                   <span class="font-bubblegum">{item}</span>
                   <span class="font-pixel text-sunset-rose">[ chef ]</span>
                 </li>
@@ -186,6 +206,8 @@ defmodule SiteWeb.MenuLive do
             raw={@raw_block}
             rows={4}
             hint="um item por linha (proibidos)"
+            template="novo proibido"
+            add_label="+ proibir item"
           >
             <ul class="font-bubblegum text-cream text-xl text-center flex flex-col gap-2">
               <li :for={item <- Site.Rooms.lines(@nao_servimos)}>X {item} X</li>
@@ -208,6 +230,8 @@ defmodule SiteWeb.MenuLive do
             raw={@raw_block}
             rows={5}
             hint="um item por linha"
+            template="novo prato wishlist"
+            add_label="+ wishlist"
           >
             <ul class="font-comic text-vinho text-base flex flex-col gap-1">
               <li :for={item <- Site.Rooms.lines(@proximos)}>- {item}</li>
